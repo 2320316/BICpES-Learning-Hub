@@ -1,0 +1,118 @@
+body{
+  background-color: #efefef;
+
+}
+
+.hero {
+  margin-left: 200px;
+  margin-top: 211px;
+}
+
+.name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 70px;
+  color: #365767;
+  font-weight: 600;
+}
+
+.hero h1{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 70px;
+  font-weight: 600;
+  color: #312f2f;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.hero h2{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #312f2f;
+  margin: 10px 0 0 0;
+  line-height: 1.2;
+}
+
+.hero p{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #312f2f;
+  margin: 10px 0 0 0;
+  line-height: 1.5;
+}
+/* ---About Me Button--- */
+/* Outer Shape (Teal Background) */
+.abt_me_btn {
+    display: inline-flex; /* aligns the inner pill and icon side-by-side */
+    align-items: center; /* center vertically */
+    background-color: #365767; /* The outer teal color */
+    border-radius: 50px; /* creates the outer oval/pill shape */
+    padding: 6px 10px; /* creates the border effect around the inner pill */
+    text-decoration: none;
+    margin-top: 50px;
+    width: max-content; /* button is only wide as much as the content */
+}
+
+/* Inner Shape (Dark Blue Background) */
+.abt_me_btn .abt_me {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #efefef;
+    background-color: #363e67; 
+    padding: 10px 25px; /* inner pill size */
+    border-radius: 50px; 
+}
+
+/* The Icon */
+.abt_me_btn .btn_icon {
+    width: 35px; /* ? image size */
+    height: auto;
+    margin-left: 5px; /* space about me and icon */
+    
+}
+
+ul {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  width: 1500px;
+  margin:10px auto;
+  border-radius: 20px; /* makes it oval */
+
+  justify-content: center; /* centers items horizontally */
+  align-items: center;  
+  list-style: none;
+  padding: 5px;
+  background-color: #363e67;
+  
+}
+
+ul li{
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: #efefef;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #365767;
+}
+
+ul li:last-child a {
+  font-weight: 600;
+  color: #363e67; /* text color */
+  border-radius: 50px;
+  background-color: #efefef;
+  border: 2px solid #365767; /* border around the background */
+  border-radius: 50px;
+  position: absolute;
+  right: 250px;
+  top: 13px;
+}
+
