@@ -1,6 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
   background-color: #efefef;
-
 }
 
 .hero {
@@ -8,11 +11,17 @@ body{
   margin-top: 211px;
 }
 
-.name {
+.hero .name {
   font-family: 'Open Sans', sans-serif;
   font-size: 70px;
   color: #365767;
   font-weight: 600;
+}
+
+.hero .school{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 30px;
+  color: #872338;
 }
 
 .hero h1{
@@ -41,6 +50,7 @@ body{
   margin: 10px 0 0 0;
   line-height: 1.5;
 }
+
 /* ---About Me Button--- */
 /* Outer Shape (Teal Background) */
 .abt_me_btn {
@@ -69,8 +79,59 @@ body{
 .abt_me_btn .btn_icon {
     width: 35px; /* ? image size */
     height: auto;
-    margin-left: 5px; /* space about me and icon */
+    margin-left: 4px; /* space about me and icon */
     
+}
+
+.blob_frame{
+  background-image: url("me.jpg");
+  background-size: 70% auto;
+  background-position: center;
+
+  width: 700px; /* Adjust size as needed */
+  height: 700px;
+
+  /* Use SVG as the mask */
+  -webkit-mask-image: url('blob.svg');
+  mask-image: url('blob.svg');
+  
+  /* Ensures the mask covers the whole div */
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  
+  /* Position of the blob */
+  position: absolute;
+  right: 200px;
+  top: 100px
+}
+
+.second {
+  margin-right: 200px;
+  margin-top: 211px;
+}
+
+.second h1{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 70px;
+  font-weight: 600;
+  color: #312f2f;
+
+  display: flex;
+  justify-self: flex-end;
+
+  margin-top: 500px;
+
+}
+
+.second .me{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 70px;
+  color: #365767;
+  font-weight: 600;
 }
 
 ul {
