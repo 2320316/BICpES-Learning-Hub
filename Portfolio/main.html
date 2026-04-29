@@ -5,38 +5,69 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#socials">Socials</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#hobbies">Hobbies</a></li>
-                <li><a href="#Contact Me">Contact Me</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <section id="home">
+                <nav>
+                    <ul>
+                        <li class="center"><a href="#home">Home</a></li>
+                        <li class="center"><a href="#socials">Socials</a></li>
+                        <li class="center"><a href="#projects">Projects</a></li>
+                        <li class="center"><a href="#hobbies">Hobbies</a></li>
 
-        <div class="hero">
-            <p>Hi!</p>
-            <h1>I'm <span class="name">Kiel</span>,</h1>
-            <h2>a Computer Engineering <br>Student 
-                from <span class="school">University <br> of Batangas Lipa City</span></h2>
+                        <li class="right"><a href="#Contact Me">Contact Me</a></li>
+                    </ul>
+                </nav>
 
-            <a href="#about" class="abt_me_btn"> <span class="abt_me">About Me</span> 
-                <!--For Question Mark Icon-->
-                <svg class="btn_icon" xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" fill="none" stroke="#efefef" stroke-width="2.5" 
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg> </a>
+                <div class="hero">
+                    <p>Hi!</p>
+                    <h1>I'm <span class="name">Kiel</span>,</h1>
+                    <h2>a Computer Engineering <br>Student 
+                        from <span class="school">University <br> of Batangas Lipa City</span></h2>
+
+                    <a href="#about" class="abt_me_btn"> <span class="abt_me">About Me</span> 
+                        <!--For Question Mark Icon-->
+                        <svg class="btn_icon" xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" fill="none" stroke="#efefef" stroke-width="2.5" 
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg> </a>
+                    <div class="blob_frame"></div>
+                </div>
+            </section>
         </div>
 
-        <div class="blob_frame"></div>
+        <section id="about">
+            <div class="second">
+                <!--&nbpsp = non-breaking space-->
+                <h1>About&nbsp;<span class="me">Me</span></h1> 
+                <p>I chose Computer Engineering because I enjoy tinkering and building things, 
+                    which is what I spend most of my time doing in this program. 
+                    Over the past few years of study, I’ve learned programming languages such as 
+                    C++, Java, and Python, along with hardware skills including circuit design, 
+                    etching, and soldering. <br><br>I also enjoy designing clean UI layouts and experimenting with small Arduino-based projects. 
+                    My goal is to continuously improve my skill set through constant learning and practical application.
+                    <br><br>Outside my university life, I enjoy going to the gym and exploring new places.
+                </p>
+
+                <div class="slider">
+                    <div class="track">
+                        <img src="555Timer_EagleBoard.png">
+                        <img src="solder.PNG">
+                        <img src="arduino.jpg">
+                        <img src="tester.jpg">
+                        <img src="555Timer_EagleBoard.png">
+                        <img src="solder.PNG">
+                        <img src="arduino.jpg">
+                        <img src="tester.jpg">
+                    </div>
+                </div>
+            </div>
+
             
-        <div class="second">
-            <!--&nbpsp = non-breaking space-->
-            <h1>About&nbsp;<span class="me">Me</span></h1> 
-        </div>
+        </section>
+
+
     </body>
 </html>

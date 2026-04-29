@@ -7,12 +7,14 @@ body{
 }
 
 .hero {
-  margin-left: 200px;
-  margin-top: 211px;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 200px;
+  padding-left: 220px;
+  width: 100%;
+  height: 100vh;
 }
 
 .hero .name {
-  font-family: 'Open Sans', sans-serif;
   font-size: 70px;
   color: #365767;
   font-weight: 600;
@@ -25,7 +27,6 @@ body{
 }
 
 .hero h1{
-  font-family: 'Open Sans', sans-serif;
   font-size: 70px;
   font-weight: 600;
   color: #312f2f;
@@ -34,7 +35,6 @@ body{
 }
 
 .hero h2{
-  font-family: 'Open Sans', sans-serif;
   font-size: 30px;
   font-weight: 600;
   color: #312f2f;
@@ -43,7 +43,6 @@ body{
 }
 
 .hero p{
-  font-family: 'Open Sans', sans-serif;
   font-size: 30px;
   font-weight: 600;
   color: #312f2f;
@@ -110,70 +109,137 @@ body{
 }
 
 .second {
-  margin-right: 200px;
-  margin-top: 211px;
+  padding-right: 210px;
+  padding-top: 100px;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  color: #312f2f;
+  
 }
 
 .second h1{
-  font-family: 'Open Sans', sans-serif;
   font-size: 70px;
   font-weight: 600;
   color: #312f2f;
 
-  display: flex;
-  justify-self: flex-end;
-
-  margin-top: 500px;
-
+  text-align: right;
+  width: 100%;
 }
 
 .second .me{
-  font-family: 'Open Sans', sans-serif;
   font-size: 70px;
-  color: #365767;
   font-weight: 600;
+  color: #365767;
+}
+
+.second p{  
+  text-align: justify;
+  color:#efefef;
+  margin-left: 980px;
+  position: relative;
+}
+
+.second p::before{
+    content: "";
+    position: absolute;
+
+    top: -10px;
+    left: -20px;
+    width: 750px;
+    height: 180px;
+    border-radius: 20px;
+
+    background: #3b4b66;
+    z-index: -1;
 }
 
 ul {
   font-family: 'Open Sans', sans-serif;
-  display: flex;
   width: 1500px;
   margin:10px auto;
   border-radius: 20px; /* makes it oval */
 
+  display: flex;
   justify-content: center; /* centers items horizontally */
   align-items: center;  
   list-style: none;
   padding: 5px;
   background-color: #363e67;
-  
-}
 
-ul li{
-  float: left;
+  position: relative;
 }
 
 ul li a {
   display: block;
   color: #efefef;
-  text-align: center;
   padding: 14px 20px;
   text-decoration: none;
 }
 
-ul li a:hover {
+ul li.center a:hover {
   background-color: #365767;
 }
 
-ul li:last-child a {
+ul .center{
+  display: flex;
+}
+
+ul .right{
   font-weight: 600;
-  color: #363e67; /* text color */
+  
   border-radius: 50px;
   background-color: #efefef;
   border: 2px solid #365767; /* border around the background */
   border-radius: 50px;
+
   position: absolute;
-  right: 250px;
-  top: 13px;
+  right: 20px;
 }
 
+ul .right a{
+  color: #363e67;
+}
+
+ul li.right a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.slider{
+  width: 750px;
+  height: 350px;
+  overflow: hidden;
+
+  margin-left: 960px;
+  margin-top: 50px;
+  box-sizing: border-box;
+  border: 10px solid #363e67;
+}
+
+.track{
+  display: flex;
+  width: max-content;
+  animation: slide 15s linear infinite;
+}
+
+.track img{
+  width: 450px;
+  height: 350px;
+  border-right: 5px solid #363e67;
+  box-sizing: border-box;
+}
+
+@keyframes slide{
+  0% { transform: translateX(0); }
+  /* Slide exactly the width of the first 4 images (450 * 4) */
+  100% { transform: translateX(-1800px); }
+}
+#home{
+   scroll-margin-top: 80px;
+}
