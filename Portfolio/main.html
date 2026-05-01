@@ -9,22 +9,25 @@
             <section id="home">
                 <nav>
                     <ul>
+                        <li class="left">
+                            <a href="#home"><img src="logo2.png" alt="Logo"></a>
+                        </li>
                         <li class="center"><a href="#home">Home</a></li>
-                        <li class="center"><a href="#socials">Socials</a></li>
                         <li class="center"><a href="#projects">Projects</a></li>
-                        <li class="center"><a href="#hobbies">Hobbies</a></li>
-
-                        <li class="right"><a href="#Contact Me">Contact Me</a></li>
+                        <li class="center"><a href="#socials">Socials</a></li>
+                    
+                        <li class="right"><a href="#contact">Contact Me</a></li>
                     </ul>
                 </nav>
 
                 <div class="hero">
-                    <p>Hi!</p>
-                    <h1>I'm <span class="name">Kiel</span>,</h1>
-                    <h2>a Computer Engineering <br>Student 
-                        from <span class="school">University <br> of Batangas Lipa City</span></h2>
+                    <div class="hero_text">
+                        <p>Hi!</p>
+                        <h1>I'm <span class="name">Kiel</span>,</h1>
+                        <h2>a Computer Engineering <br>Student 
+                            from <span class="school">University <br> of Batangas Lipa City</span></h2>
 
-                    <a href="#about" class="abt_me_btn"> <span class="abt_me">About Me</span> 
+                        <a href="#about" class="abt_me_btn"> <span class="abt_me">About Me</span> 
                         <!--For Question Mark Icon-->
                         <svg class="btn_icon" xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 24 24" fill="none" stroke="#efefef" stroke-width="2.5" 
@@ -33,6 +36,10 @@
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
                         </svg> </a>
+
+                    </div>
+
+                    
                     <div class="blob_frame"></div>
                 </div>
             </section>
@@ -40,34 +47,140 @@
 
         <section id="about">
             <div class="second">
-                <!--&nbpsp = non-breaking space-->
-                <h1>About&nbsp;<span class="me">Me</span></h1> 
-                <p>I chose Computer Engineering because I enjoy tinkering and building things, 
-                    which is what I spend most of my time doing in this program. 
-                    Over the past few years of study, I’ve learned programming languages such as 
-                    C++, Java, and Python, along with hardware skills including circuit design, 
-                    etching, and soldering. <br><br>I also enjoy designing clean UI layouts and experimenting with small Arduino-based projects. 
-                    My goal is to continuously improve my skill set through constant learning and practical application.
-                    <br><br>Outside my university life, I enjoy going to the gym and exploring new places.
-                </p>
+                
+                <div class="abt_me_pic"><img src="aboutme.png" alt="Kiel"></div>
 
-                <div class="slider">
-                    <div class="track">
-                        <img src="555Timer_EagleBoard.png">
-                        <img src="solder.PNG">
-                        <img src="arduino.jpg">
-                        <img src="tester.jpg">
-                        <img src="555Timer_EagleBoard.png">
-                        <img src="solder.PNG">
-                        <img src="arduino.jpg">
-                        <img src="tester.jpg">
+                <div class="abt_contents">
+                    <div class="abt_text">
+                        <!--&nbpsp = non-breaking space-->
+                        <h1>About&nbsp;<span class="me">Me</span></h1> 
+                        <p>I chose Computer Engineering because I enjoy tinkering and building things, 
+                            which is what I spend most of my time doing in this program. 
+                            Over the past few years of study, I’ve learned programming languages such as 
+                            <b>C++</b>, <b>Java</b>, and <b>Python</b>, along with hardware skills including <b>circuit design</b>, 
+                            <b>etching</b>, and <b>soldering</b>. <br><br>I also enjoy designing clean UI layouts and experimenting with small Arduino-based projects. 
+                            My goal is to continuously improve my skill set through constant learning and practical application.
+                            <br><br>Outside my university life, I enjoy going to the gym and exploring new places.
+                        </p>
+                    </div>
+
+                    <div class="slider">
+                        <div class="track">
+                            <img src="555Timer_EagleBoard.png">
+                            <img src="py.png">
+                            <img src="arduino.jpg">
+                            <img src="tester.jpg">
+                            <img src="555Timer_EagleBoard.png">
+                            <img src="py.png">
+                            <img src="arduino.jpg">
+                            <img src="tester.jpg">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            
+            </div>
         </section>
 
+        <section id="projects">
+            <div class="projects">
+
+                <h1>My Projects</h1>
+
+                <table>
+                    <tr>
+                        <th> Project </th>
+                        <th> Description </th>
+                        <th> School Year </th>
+                    </tr>
+                    <tr>
+                        <td class="titles"> 
+                            <img src="radio.jpg" class="table_pic"><br>
+                            <strong>Walkie-Talkie</strong> 
+                        </td>
+                        <td> An electronics project involving a basic AM transmitter and receiver circuit for communication experiments. </td>
+                        <td> 2nd Year - 2nd Sem </td>
+                    </tr>
+
+                    <tr>
+                        <td class="titles"> 
+                            <img src="7seg.jpg" class="table_pic"><br>
+                            <strong>7 Segment Display</strong> 
+                        </td>
+                        <td> An electronic device used to show numbers using seven small LED segments arranged in a figure-eight pattern. By turning specific segments on or off, it can display digits from 0 to 9. 
+                            It is commonly used in digital clocks, calculators, and electronic meters. </td>
+                        <td> 3rd Year - 1st Sem (Midterms) </td>
+                    </tr>
+
+                    <tr>
+                        <td class="titles">
+                            <img src="24sec.jpg" class="table_pic"><br>
+                            <strong>24 Seconds Shot Clock</strong> 
+                        </td>
+                        <td> An electronic timing system designed to simulate the countdown used in basketball games. It displays a 24-second timer using a 7-segment display, 
+                            which automatically counts down once activated. The system includes control buttons for start, stop, and reset functions, along with a buzzer that sounds when the time expires, 
+                            indicating a violation. This project demonstrates the practical application of digital electronics, timing circuits, and basic programming or logic design in creating a functional 
+                            and interactive sports device. </td>
+                        <td> 3rd Year - 1st Sem (Finals) </td>
+                    </tr>
+                </table>
+
+            </div>
+        </section>
+
+        
+        <section id="contact" class="overlay_popup">
+            <div class="overlay_message">
+                <a href="#stay" class="close_btn">&times;</a>
+                <h2>Send a message and I'll get in touch with you ASAP!</h2>
+                <form action="#" method="POST">
+                    <div class="input_box">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+
+                    <div class="input_box">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="input_box">
+                        <textarea placeholder="Your Message..." rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="send_btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="socials" class="socials_section">
+            <div class="poem">
+                <h2>The <span class="puno">Tree</span></h2>
+                <h3>By: Joyce Kilmer</h3>
+                <p>I think that I shall never see<br>
+                    a poem lovely as a tree.<br>
+                    A tree whose hungry mouth is pressed<br>
+                    Against the earth’s sweet flowing breast.</p>
+            </div>
+
+            <div class="social_media">
+                <h1>Let's Connect!</h1>
+                <p>Great things happen when curiosity meets collaboration.<br>As a student exploring the vast world of technology,<br>
+                    I’m focused on building meaningful<br> projects and learning how to turn ideas into reality.<br> Feel free to connect with me!<br> 
+                    I’m always looking to expand my network and would <br> love to hear your thoughts on what you're working on too.</p>
+                <div class="gallery">
+                    <a href="https://github.com/Kielot"> <img src="github.png"> </a>
+                    <a href="https://www.linkedin.com/in/kiel-carandang-92166434a/"> <img src="linkedin.png"> </a>
+                    <a href="https://www.facebook.com/kielotski.1219"> <img src="facebook.png"> </a>
+                    <a href="https://www.instagram.com/klcrndng/"> <img src="instagram.png"> </a>
+                </div>
+            </div>
+        </section>
+
+        
 
     </body>
+
+    <footer>
+        <div class="footer_content">
+            <p>&copy; 2026 Kiel Albretch M. Carandang | BICPeS</p>
+        </div>
+    </footer>
 </html>
