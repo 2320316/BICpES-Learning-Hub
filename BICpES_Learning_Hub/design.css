@@ -14,7 +14,6 @@ nav a{
     text-decoration: none;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 20px;
-
     padding: 10px 20px;
 }
 
@@ -53,9 +52,7 @@ nav a{
     flex-direction: column;
     align-items: center;
     padding: 50px 50px 0px 50px;
-
     min-height: 100vh;
-    
 }
 
 .headings{
@@ -88,20 +85,17 @@ nav a{
     color: white;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 20px;
-
     background-color: #9b46d4;
     padding: 15px;
     border-radius: 15px;
-
     margin-bottom: 100px;
 }
 
 .box{
-    background-color: #9b46d4;
+    background: linear-gradient(#edf2fd, #9b46d4);
     height: 615px;
     width: 930px;
     border-radius: 20px 20px 0px 0px;
-
     margin-top: auto;
     flex-shrink: 0;
 }
@@ -121,7 +115,6 @@ nav a{
     align-items: center;
     justify-content: flex-start;
     padding: 10px 0px 0px 0px;
-
     height: 100vh;
 }
 
