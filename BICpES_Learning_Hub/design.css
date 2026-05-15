@@ -15,7 +15,9 @@ nav {
     left: 0;
     right: 0;
     display: flex;
-    padding: 20px;
+    padding: 5px 20px;
+    background-color: #101010;
+    z-index: 100;
 }
 
 nav a{
