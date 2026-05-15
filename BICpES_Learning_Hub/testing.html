@@ -28,6 +28,51 @@
             </div>
         </nav>
 
+        <!-- Login/Signup Form -->
+        <section class="container-log" id="login">
+            <div class="log-container">
+                <a href="#stay" class="close_btn">&times;</a>
+                <div class="new_acc">
+                    <form action="accounts.php" method="POST">
+                        <h1>Create Account</h1>
+                        <input type="number" placeholder="Student Number"/><br>
+                        <input type="text" placeholder="Last Name"/><br>
+                        <input type="text" placeholder="First Name"/><br>
+                        <input type="date" name="birthdate"/><br>
+                        <input type="password" placeholder="Password"/><br>
+                        <input type="password" placeholder="Confirm Password"/><br>
+                        <button>Sign Up</button>
+                    </form>
+                </div>
+
+                <div class="old_acc">
+                    <form action="accounts.php" method="POST">
+                        <h1>Login</h1>
+                        <input type="number" placeholder="Student Number"/><br>
+                        <input type="password" placeholder="Password"/><br>
+                        <button>Login</button>
+                    </form>
+                </div>
+
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay_left">
+                            <h1>Welcome Back!</h1>
+                            <p> Explore more with us please login with your existing account</p>
+                            <button id="signIn">Login</button>
+                        </div>
+                        <div class="overlay_right">
+                            <h1>Hello, Fellow CPE Student!</h1>
+                            <p>Enter your personal details and start journey with us</p>
+                            <button id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+            
+
         <section id="home">
             <div class="headings">
                 <h1>BICpES Learning Hub</h1>

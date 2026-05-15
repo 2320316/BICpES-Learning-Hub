@@ -24,3 +24,28 @@ window.addEventListener('scroll', () => {
             button.style.opacity = opacity;
         }
     });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Login/Signup Form Script
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('login');
+    const closeBtn = document.querySelector('.close_btn');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+
+        // change close button color
+        closeBtn.style.color = "#9b46d4";
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+
+        // change close button color back
+        closeBtn.style.color = "#efefef";
+    });
+
+});
+
