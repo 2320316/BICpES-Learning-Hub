@@ -47,5 +47,33 @@ document.addEventListener("DOMContentLoaded", () => {
         closeBtn.style.color = "#efefef";
     });
 
+
+    // Search bar toggle
+    const searchToggle = document.getElementById('search');
+    const searchInput = document.getElementById('searchInput');
+    const searchBar = searchToggle.closest('.search_bar');
+
+    searchToggle.addEventListener('click', () => {
+        searchBar.classList.toggle('active');
+        if (searchBar.classList.contains('active')) {
+            searchInput.focus();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchBar.contains(e.target)) {
+            if (searchInput.value.trim() === '') {
+                searchBar.classList.remove('active');
+            }
+        }
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            searchBar.classList.remove('active');
+            searchInput.value = '';
+        }
+    });
+
 });
 

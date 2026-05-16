@@ -23,7 +23,12 @@
             </div>
 
             <div class="right-side">
-                <a href="#search"><img src="search-icon.png" alt="Search"></a>
+                <div class="search_bar">
+                    <input type="text" class="search_input" id="searchInput" placeholder="Search..." aria-label="Search">
+                    <div class="search_icon" id="search" role="button" aria-label="Open search" tabindex="0">
+                        <img src="Images\Icons\search_icon.png" alt="Search">
+                    </div>
+                </div>
                 <a href="#login">Login</a>
             </div>
         </nav>
@@ -81,7 +86,10 @@
             </div>
             <a href="#login"><button class="learn">Start Learning</button></a>
 
-            <div class="box"></div>
+            <div class="skills_box">
+                <div class="box"></div>
+                <div class="box_in"></div>
+            </div>
         </section>
 
         <section id="skills">
@@ -110,11 +118,6 @@
                 <div class="project_box">
                     <img src="Images/Sample.png" alt="Project 3">
                     <p>Project 3</p>
-                </div>
-
-                <div class="project_box">
-                    <img src="Images/Sample.png" alt="Project 4">
-                    <p>Project 4</p>
                 </div>
             </div>
             <h2>VIEW MORE</h2>

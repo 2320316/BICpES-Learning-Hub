@@ -70,6 +70,62 @@ nav a{
     box-shadow: 0px 0px 10px rgb(255, 255, 255, 0.5);
 }
 
+/* ---Search Bar--- */
+.search_bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;
+}
+
+.search_icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.search_icon img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    transition: transform 0.3s ease;
+}
+
+.search_icon:hover img {
+    transform: scale(1.2);
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(250deg);
+}
+
+.search_input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid #9b46d4;
+    background: #101010; /* solid bg to cover elements behind it */
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    position: absolute;
+    right: 44px;
+    max-width: 300px;
+    z-index: 99; 
+}
+
+.search_bar.active .search_input {
+    width: min(20vw, 300px);
+    opacity: 1;
+    padding: 4px 8px;
+}
+
+.search_bar.active .search_icon img {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(250deg);
+}
+
 /* ---Login/Signup Form--- */
 .container-log {
 	position: fixed; 
@@ -332,6 +388,10 @@ input {
     box-shadow: 0px 0px 10px rgb(255, 255, 255, 0.5);
 }
 
+.skills_box {
+    position: relative;
+}
+
 .box{
     background: linear-gradient(#edf2fd, #9b46d4);
     height: 615px;
@@ -339,7 +399,24 @@ input {
     border-radius: 20px 20px 0px 0px;
     margin-top: auto;
     flex-shrink: 0;
+    box-shadow: 0 -10px 30px 0 rgba(170, 112, 209, 0.25);
 }
+
+.box_in {
+    width: 1050px;
+    height: 680px;
+    border-radius: 20px 20px 0px 0px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 -10px 60px 0 rgba(167, 93, 216, 0.25);
+}
+
 /* ---Fade/Scale Down--- */
 .headings, .learn {
     /* Essential for animations */
@@ -390,7 +467,7 @@ ul li:hover{
     justify-content: center;
     padding: 40px 0px 20px 0px;
     width: 100%;
-    min-height: 1000px;
+    min-height: 700px;
     background: linear-gradient(#101010, #9b46d4);
 }
 
@@ -398,7 +475,7 @@ ul li:hover{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
-    margin-top: 60px;
+    margin-top: 180px;
     margin-bottom: 60px;
 }
 
@@ -412,13 +489,13 @@ ul li:hover{
 
 .project_box{
     width: 300px;
-    height: 400px;
+    height: 300px;
 }
 
 .project_box img{
     display: block;
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 250px;
     border-radius: 20px 20px 0px 0px;
 }
 
@@ -427,7 +504,8 @@ ul li:hover{
     color: #9b46d4;
     font-family: Arial, Helvetica, sans-serif;
     justify-content: flex-end;
-    padding: 40px;
+    text-align: center;
+    padding: 20px;
     margin: 0px;
     border-radius: 0px 0px 20px 20px;
 }
@@ -435,7 +513,7 @@ ul li:hover{
 .project_box:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
-    box-shadow: 0px 35px 12px rgb(0, 0, 0, 0.5);
+    box-shadow: 0px 15px 12px rgb(0, 0, 0, 0.5);
 }
 
 #projects h2{
@@ -445,7 +523,7 @@ ul li:hover{
     margin-top: 100px;
     text-decoration: none;
     margin-top: 60px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 #projects h2:hover{
@@ -551,7 +629,7 @@ ul li:hover{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 50px;
-    margin-top: 80px;
+    margin-top: 120px;
     margin-bottom: 60px;
 }
 
@@ -566,7 +644,8 @@ ul li:hover{
 }
 
 .tool_1, .tool_2 {
-    width: 400px;
+    min-width: 350px; 
+    max-width: 400px;
     height: 500px;
     font-size: 48px;
     text-decoration: none;
@@ -582,7 +661,7 @@ ul li:hover{
 .tool_1:hover, .tool_2:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
-    box-shadow: 0px 35px 12px rgb(0, 0, 0, 0.5);
+    box-shadow: 0 0 30px #9b46d4, inset 0 0 5px #9b46d4;
 }
 
 .tool_1 a, .tool_2 a {
@@ -608,7 +687,7 @@ ul li:hover{
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 1000px;
+    min-height: 900px;
     margin: 0px; 
     padding: 80px 40px;
     background-color:  #101010;
@@ -617,8 +696,8 @@ ul li:hover{
 
 .left_box {
     display: flex;
-    width: 900px;
-    height: 800px;
+    width: 800px;
+    height: 700px;
     margin-left: 80px;;
     background: linear-gradient(#edf2fd, #9b46d4);
     border-radius: 40px;
@@ -637,13 +716,11 @@ ul li:hover{
 }
 
 .about_text p{
-    font-size: 250px; 
+    font-size: clamp(64px, 12vw, 250px);
     background: linear-gradient(#edf2fd, #9b46d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    padding-right: 80px;
-    margin-right: 80px; 
 }
 
 /* ---Footer--- */
