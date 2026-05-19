@@ -664,34 +664,6 @@ ul li:hover::before {
     background-color: #101010;
 }
 
-/* ---Topics List Page Content--- */
-.topics_list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 40px 80px;
-    max-width: 750px;
-    margin: 0 auto;
-}
-
-.topic_card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.topic_card:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-}
-
 /* Image placeholder per card */
 .topic_img {
     width: 120px;
