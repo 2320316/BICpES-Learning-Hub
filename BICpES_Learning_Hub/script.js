@@ -1,3 +1,4 @@
+// Front Page Hero Section Fade
 window.addEventListener('scroll', () => {
         const headings = document.querySelector('.headings');
         const button = document.querySelector('.learn');
@@ -25,6 +26,7 @@ window.addEventListener('scroll', () => {
         }
     });
 
+// Login
 document.addEventListener("DOMContentLoaded", () => {
 
     // Login/Signup Form Script
@@ -77,3 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+// Topics Section - Search Function
+function toggle(el) { el.classList.toggle('open'); }
+
+document.getElementById('topicSearch').addEventListener('input', function () {
+    const q = this.value.toLowerCase();
+    document.querySelectorAll('.topic-row').forEach(row => {
+        const name = row.querySelector('.topic-name')?.textContent.toLowerCase() || '';
+        row.style.display = name.includes(q) ? '' : 'none';
+    });
+});
