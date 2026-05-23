@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="user_design.css">
+        <script src="script.js"></script>
+        <title>BICpES Learning Hub</title>
+    </head>
+
+    <body>
+        <!-- User button (place this where your .user_button was) -->
+        <button class="user_button" id="userBtn" title="Account">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"/>
+                <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+        </button>
+        
+        <!-- Overlay + panel -->
+        <div class="user-panel-overlay" id="userPanelOverlay">
+            <div class="panel-backdrop" id="panelBackdrop"></div>
+            <div class="user-panel">
+            
+                <div class="panel-header">
+                    <div class="panel-avatar">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"/>
+                            <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="panel-name">Juan Dela Cruz</div>
+                    <div class="panel-id">Student No. 2321000</div>
+                </div>
+            
+                <div class="panel-menu">
+                    <button class="panel-item" id="panelBtnEdit">
+                        <div class="item-text">
+                            <span class="item-label">Edit Information</span>
+                            <span class="item-sub">Update your profile details</span>
+                        </div>
+                        <span class="panel-chevron">›</span>
+                    </button>
+            
+                    <button class="panel-item" id="panelBtnPass">
+                        <div class="item-text">
+                            <span class="item-label">Change Password</span>
+                            <span class="item-sub">Update your credentials</span>
+                        </div>
+                        <span class="panel-chevron">›</span>
+                    </button>
+            
+                    <div class="panel-divider"></div>
+            
+                    <button class="panel-item logout" id="panelBtnLogout">
+                        <div class="item-text">
+                            <span class="item-label">Logout</span>
+                            <span class="item-sub">Sign out of your account</span>
+                        </div>
+                    </button>
+                </div>
+            
+            </div>
+        </div>
+    </body>
+</html>

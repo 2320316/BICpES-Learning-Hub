@@ -22,9 +22,7 @@
         </div>
 
         <div class="right-side">
-            <div class="user_button" href="#user">
-                <img src="Images/Icons/user_icon.png" alt="USER">
-            </div>
+            <div id="user-panel-root"></div>
         </div>
     </nav>
 
@@ -45,7 +43,7 @@
     </div>
 
     <div class="projects-grid">
-
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p1"></div><span class="card-pill">Featured</span></div>
             <div class="card-body">
@@ -53,7 +51,9 @@
                 <div class="card-footer-row"><span class="card-meta">Embedded · 2026</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p2"></div><span class="card-pill">PCB Design</span></div>
             <div class="card-body">
@@ -61,7 +61,9 @@
                 <div class="card-footer-row"><span class="card-meta">PCB · 2025</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p3"></div><span class="card-pill">Circuits</span></div>
             <div class="card-body">
@@ -69,7 +71,9 @@
                 <div class="card-footer-row"><span class="card-meta">Circuits · 2025</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p4"></div><span class="card-pill">IoT</span></div>
             <div class="card-body">
@@ -77,7 +81,9 @@
                 <div class="card-footer-row"><span class="card-meta">IoT · 2026</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p5"></div><span class="card-pill">Robotics</span></div>
             <div class="card-body">
@@ -85,7 +91,9 @@
                 <div class="card-footer-row"><span class="card-meta">Robotics · 2025</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p6"></div><span class="card-pill">Embedded</span></div>
             <div class="card-body">
@@ -93,7 +101,9 @@
                 <div class="card-footer-row"><span class="card-meta">Embedded · 2026</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p7"></div><span class="card-pill">PCB Design</span></div>
             <div class="card-body">
@@ -101,7 +111,9 @@
                 <div class="card-footer-row"><span class="card-meta">PCB · 2025</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p8"></div><span class="card-pill">Circuits</span></div>
             <div class="card-body">
@@ -109,7 +121,9 @@
                 <div class="card-footer-row"><span class="card-meta">Circuits · 2025</span><div class="card-btn">›</div></div>
             </div>
         </div>
+        </a>
 
+        <a href="project_view.html">
         <div class="project-card">
             <div class="card-thumb"><div class="ph p9"></div><span class="card-pill">IoT</span></div>
             <div class="card-body">
@@ -117,7 +131,7 @@
                 <div class="card-footer-row"><span class="card-meta">IoT · 2026</span><div class="card-btn">›</div></div>
             </div>
         </div>
-
+        </a>
     </div>
 
     <div class="back-bar">
@@ -131,13 +145,20 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
+        // Filter buttons
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
             });
         });
+
+        // Panel events
+        document.addEventListener('panel:editInfo',  () => { /* open edit info modal */ });
+        document.addEventListener('panel:changePass', () => { /* open change password modal */ });
+        document.addEventListener('panel:logout',     () => { window.location.href = 'main.html'; });
     </script>
 </body>
 </html>

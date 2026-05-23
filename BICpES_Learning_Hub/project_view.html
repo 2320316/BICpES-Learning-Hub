@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BICpES — Smart Home Controller</title>
+    <link rel="stylesheet" type="text/css" href="project_view_design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="main.html" class="left-side"><img src="Images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
+
+    <div class="center">
+        <a href="main.html"><span><strong>BICpES</strong></span> Learning Hub</a>
+    </div>
+
+    <div class="right-side">
+        <div class="user_button" href="#user">
+            <img src="Images/Icons/user_icon.png" alt="USER">
+        </div>
+    </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="projects.html">Projects</a>
+    <span class="sep">›</span>
+    <span class="current">Smart Home Controller</span>
+</div>
+
+<!-- HERO (Balanced Two-Column Layout) -->
+<div class="hero">
+    <div class="hero-left">
+        <span class="hero-tag">Embedded Systems · 2026</span>
+        <div class="hero-title">Smart Home <em>Controller</em></div>
+    </div>
+    <div class="hero-right">
+        <p class="hero-brief">An offline, ESP32-powered home automation architecture utilizing double-layer hardware routing, specialized multi-channel relay modules, and dedicated peripheral arrays.</p>
+    </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+    <div class="banner-bg">
+        <div class="banner-deco">
+            <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <line x1="0" y1="100" x2="900" y2="100" stroke="white" stroke-width="0.8"/>
+                <line x1="0" y1="200" x2="900" y2="200" stroke="white" stroke-width="0.8"/>
+                <line x1="0" y1="300" x2="900" y2="300" stroke="white" stroke-width="0.8"/>
+                <line x1="150" y1="0" x2="150" y2="380" stroke="white" stroke-width="0.8"/>
+                <line x1="350" y1="0" x2="350" y2="380" stroke="white" stroke-width="0.8"/>
+                <line x1="550" y1="0" x2="550" y2="380" stroke="white" stroke-width="0.8"/>
+                <line x1="750" y1="0" x2="750" y2="380" stroke="white" stroke-width="0.8"/>
+                <circle cx="150" cy="100" r="5" fill="white"/>
+                <circle cx="350" cy="200" r="5" fill="white"/>
+                <circle cx="550" cy="100" r="5" fill="white"/>
+                <circle cx="750" cy="300" r="5" fill="white"/>
+                <circle cx="150" cy="300" r="3" fill="white"/>
+                <circle cx="550" cy="300" r="3" fill="white"/>
+                <path d="M150 100 L350 100 L350 200" stroke="white" stroke-width="1.5" fill="none"/>
+                <path d="M350 200 L550 200 L550 100 L750 100" stroke="white" stroke-width="1.5" fill="none"/>
+                <path d="M150 300 L350 300 L350 200" stroke="white" stroke-width="1.5" fill="none"/>
+                <path d="M550 300 L750 300" stroke="white" stroke-width="1.5" fill="none"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <!-- 1. OVERVIEW -->
+    <div class="section">
+        <div class="section-eyebrow">Overview</div>
+        <h2>About this Project</h2>
+        <p>The Smart Home Controller is an ESP32-based automation hub designed to manage lighting, temperature, and security systems across a household. It uses MQTT protocol, a custom Android companion app, and a local voice command interface — all without any cloud dependency.</p>
+        <p>The physical system is built around a custom double-layer PCB with a power regulation circuit, an 8-channel relay driver array, and a 2.4" TFT touch display for local feedback. All communication is encrypted over local Wi-Fi, making it fully offline-capable.</p>
+        <p>This project was developed as part of CPE 421 (Embedded Systems Design) and covers the complete design cycle: schematic capture, PCB layout, etching, soldering, firmware development, and mobile app integration.</p>
+    </div>
+
+    <!-- 2. REQUIRED COMPONENTS -->
+    <div class="section">
+        <div class="section-eyebrow">Required Components</div>
+        <h2>Parts &amp; Materials</h2>
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th style="width:30%">Component</th>
+                    <th style="width:45%">Specification</th>
+                    <th>Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ESP32 DevKit v1</td>
+                    <td>240 MHz dual-core, Wi-Fi + Bluetooth</td>
+                    <td><span class="qty">×1</span></td>
+                </tr>
+                <tr>
+                    <td>5V Relay Module</td>
+                    <td>10A / 250VAC, optocoupler isolated</td>
+                    <td><span class="qty">×8</span></td>
+                </tr>
+                <tr>
+                    <td>DHT22 Sensor</td>
+                    <td>Temperature &amp; Humidity, ±0.5°C accuracy</td>
+                    <td><span class="qty">×3</span></td>
+                </tr>
+                <tr>
+                    <td>TFT Touch Display</td>
+                    <td>2.4" ILI9341, 240×320, SPI interface</td>
+                    <td><span class="qty">×1</span></td>
+                </tr>
+                <tr>
+                    <td>LM2596 Buck Converter</td>
+                    <td>Input 12V → Output 5V / 3A regulated</td>
+                    <td><span class="qty">×2</span></td>
+                </tr>
+                <tr>
+                    <td>PIR Motion Sensor</td>
+                    <td>HC-SR501, adjustable sensitivity &amp; delay</td>
+                    <td><span class="qty">×4</span></td>
+                </tr>
+                <tr>
+                    <td>Custom PCB (2-layer)</td>
+                    <td>FR4 substrate, 1oz copper, HASL finish</td>
+                    <td><span class="qty">×1</span></td>
+                </tr>
+                <tr>
+                    <td>12V DC Power Supply</td>
+                    <td>2A minimum, barrel jack connector</td>
+                    <td><span class="qty">×1</span></td>
+                </tr>
+                <tr>
+                    <td>Jumper Wires &amp; Headers</td>
+                    <td>Male/female, 2.54mm pitch assorted</td>
+                    <td><span class="qty">×1 set</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3. PROCEDURE -->
+    <div class="section">
+        <div class="section-eyebrow">Procedure</div>
+        <h2>Step-by-Step Build Guide</h2>
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-num-wrap">
+                    <div class="step-circle">1</div>
+                </div>
+                <div class="step-body">
+                    <div class="step-title">Schematic Design &amp; PCB Layout</div>
+                    <div class="step-desc">Open KiCad or EasyEDA and recreate the circuit schematic from the provided reference diagram. Assign component footprints, run the ERC (Electrical Rules Check), then switch to PCB layout view. Route all traces following the design rules: power traces at minimum 1mm width, signal traces at 0.4mm. Add a ground fill to both layers and run DRC before exporting Gerbers.</div>
+                    <div class="step-note"><p>💡 Keep the relay driver section physically separated from the ESP32 signal area to minimize electromagnetic interference.</p></div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num-wrap">
+                    <div class="step-circle">2</div>
+                </div>
+                <div class="step-body">
+                    <div class="step-title">PCB Etching &amp; Drilling</div>
+                    <div class="step-desc">Print the Gerber top-copper layer on a transparency film at 1:1 scale using a laser printer. Transfer the pattern onto a copper-clad FR4 board using the UV exposure method or toner transfer. Etch using ferric chloride solution (40°C, ~15 minutes), rinse thoroughly with water, then neutralize with baking soda solution. Drill all holes using 0.8mm and 1.0mm drill bits at the designated pad locations.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num-wrap">
+                    <div class="step-circle">3</div>
+                </div>
+                <div class="step-body">
+                    <div class="step-title">Component Soldering</div>
+                    <div class="step-desc">Begin with passive components (resistors, capacitors) and work toward larger components. Solder the LM2596 buck converters first and verify regulated 5V output before proceeding. Solder pin headers, relay modules, and finally the ESP32 DevKit. Use flux paste on all joints and inspect each solder joint under magnification for bridges or cold joints.</div>
+                    <div class="step-note"><p>⚠ Do not solder the ESP32 until power supply output has been verified with a multimeter.</p></div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num-wrap">
+                    <div class="step-circle">4</div>
+                </div>
+                <div class="step-body">
+                    <div class="step-title">Firmware Upload &amp; Configuration</div>
+                    <div class="step-desc">Open the provided Arduino sketch in VS Code with the PlatformIO extension. Install required libraries: PubSubClient (MQTT), Adafruit ILI9341 (TFT), and DHT sensor library. Configure your local Wi-Fi credentials and MQTT broker IP in the config.h file. Upload to the ESP32 via USB and open the Serial Monitor at 115200 baud to verify successful connection and topic subscriptions.</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-num-wrap">
+                    <div class="step-circle">5</div>
+                </div>
+                <div class="step-body">
+                    <div class="step-title">Mobile App Setup &amp; Testing</div>
+                    <div class="step-desc">Install the companion APK on an Android device connected to the same local network. Open the app, enter the MQTT broker IP, and pair with the controller. Test each relay individually from the app, verify DHT22 sensor readings appear on the TFT display, and confirm PIR motion alerts are published to the correct MQTT topics. Perform a full system test by running all 8 zones simultaneously for 10 minutes.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 4. VIDEO TUTORIAL -->
+    <div class="section">
+        <div class="section-eyebrow">Video Tutorial</div>
+        <h2>Watch &amp; Learn</h2>
+
+        <div class="video-wrap">
+            <div class="video-thumb">
+                <div class="play-btn">▶</div>
+                <span class="video-label">Full Build Walkthrough</span>
+            </div>
+            <div class="video-meta">
+                <span class="video-title">Smart Home Controller — Complete Build Guide</span>
+                <span class="video-dur">42:17</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- BACK -->
+<div class="back-bar">
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+</div>
+
+<footer class="footer">
+    <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+    <div class="links">
+        <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
+    </div>
+</footer>
+
+</body>
+</html>

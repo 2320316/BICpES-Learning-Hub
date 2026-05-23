@@ -79,14 +79,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-// Topics Section - Search Function
-function toggle(el) { el.classList.toggle('open'); }
-
-document.getElementById('topicSearch').addEventListener('input', function () {
-    const q = this.value.toLowerCase();
-    document.querySelectorAll('.topic-row').forEach(row => {
-        const name = row.querySelector('.topic-name')?.textContent.toLowerCase() || '';
-        row.style.display = name.includes(q) ? '' : 'none';
+// Search filter
+const searchInput = document.getElementById('topicSearch');
+if (searchInput) {
+    searchInput.addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('.topic-row').forEach(row => {
+            const name = row.querySelector('.topic-name')?.textContent.toLowerCase() || '';
+            const expand = row.querySelector('.topic-expand')?.textContent.toLowerCase() || '';
+            row.style.display = (name.includes(q) || expand.includes(q)) ? '' : 'none';
+        });
     });
-});
+};
+
+// User Panel Loader
+const panelRoot = document.getElementById('user-panel-root');
+if (panelRoot) {
+    fetch('user_panel.html')
+        .then(r => r.text())
+        .then(html => {
+            panelRoot.innerHTML = html;
+            initUserPanel();
+        });
+}
+
+function initUserPanel() {
+    const userBtn       = document.getElementById('userBtn');
+    const panelOverlay  = document.getElementById('userPanelOverlay');
+    const panelBackdrop = document.getElementById('panelBackdrop');
+    const btnEdit       = document.getElementById('panelBtnEdit');
+    const btnPass       = document.getElementById('panelBtnPass');
+    const btnLogout     = document.getElementById('panelBtnLogout');
+
+    if (!userBtn) return;
+
+    function closePanel() { panelOverlay.classList.remove('open'); }
+    function openPanel()  { panelOverlay.classList.add('open'); }
+
+    userBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        panelOverlay.classList.contains('open') ? closePanel() : openPanel();
+    });
+
+    panelBackdrop.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePanel();
+    });
+
+    btnEdit.addEventListener('click', () => {
+        closePanel();
+        document.dispatchEvent(new CustomEvent('panel:editInfo'));
+    });
+
+    btnPass.addEventListener('click', () => {
+        closePanel();
+        document.dispatchEvent(new CustomEvent('panel:changePass'));
+    });
+
+    btnLogout.addEventListener('click', () => {
+        closePanel();
+        document.dispatchEvent(new CustomEvent('panel:logout'));
+    });
+}
