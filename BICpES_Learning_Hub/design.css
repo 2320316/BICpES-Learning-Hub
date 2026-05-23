@@ -594,6 +594,12 @@ ul li:hover::before { width: 100%; opacity: 1; }
     border-bottom: lightgrey solid 1px;
 }
 
+.topics_container p:hover {
+    transform: scale(1.1); 
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1.5);
+    color: lavender; 
+}
+
 .topics_container a:last-of-type { border-bottom: none; }
 
 .right_box {
