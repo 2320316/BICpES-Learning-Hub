@@ -592,7 +592,7 @@ ul li:hover::before { width: 100%; opacity: 1; }
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px;
     width: 100%;
     min-height: 900px;
     background-color: #101010;
@@ -617,11 +617,13 @@ ul li:hover::before { width: 100%; opacity: 1; }
     padding: 0px 200px;
 }
 
-.tool_1, .tool_2 {
+/* Consolidated tool box styles */
+.tool_box_border {
     min-width: 350px;
     max-width: 400px;
     height: 500px;
-    text-decoration: none;
+    text-decoration: none; /* Prevents text underlining since parent is now an 'a' tag */
+    color: white;          /* Ensures text remains white */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -629,15 +631,16 @@ ul li:hover::before { width: 100%; opacity: 1; }
     padding: 20px;
     border: 8px solid;
     border-image: linear-gradient(#edf2fd, #9b46d4) 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tool_1:hover, .tool_2:hover {
+.tool_box_border:hover {
     transform: scale(1.05);
-    transition: transform 0.3s ease;
     box-shadow: 0 0 10px #9b46d4, 0 0 20px #9b46d4, 0 0 40px #9b46d4, inset 0 0 40px #9b46d4;
 }
 
-.tool_1 a, .tool_2 a {
+/* Styles for the title string inside the box */
+.tool_box_border .tool_title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(24px, 3vw, 42px);
     font-weight: 700;
@@ -648,7 +651,7 @@ ul li:hover::before { width: 100%; opacity: 1; }
     border-image: linear-gradient(90deg, #edf2fd, #9b46d4) 1;
 }
 
-.tool_1 p, .tool_2 p {
+.tool_box_border p {
     font-family: 'Manrope', sans-serif;
     font-size: 16px;
     font-weight: 400;
