@@ -74,62 +74,6 @@ nav a {
     box-shadow: 0px 0px 10px rgb(255, 255, 255, 0.5);
 }
 
-/* ---Search Bar--- */
-.search_bar {
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 10px 15px;
-}
-
-.search_icon {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    z-index: 2;
-    flex-shrink: 0;
-}
-
-.search_icon img {
-    width: 24px;
-    height: 24px;
-    filter: invert(1);
-    transition: transform 0.3s ease;
-}
-
-.search_icon:hover img {
-    transform: scale(1.2);
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(250deg);
-}
-
-.search_input {
-    width: 0;
-    opacity: 0;
-    padding: 0;
-    border: none;
-    border-bottom: 2px solid #9b46d4;
-    background: #101010;
-    color: white;
-    font-family: 'Manrope', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: width 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-    position: absolute;
-    right: 44px;
-    max-width: 300px;
-    z-index: 99;
-}
-
-.search_bar.active .search_input {
-    width: min(20vw, 300px);
-    opacity: 1;
-    padding: 4px 8px;
-}
-
-.search_bar.active .search_icon img {
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(250deg);
-}
-
 /* ---Login/Signup Form--- */
 .container-log {
     position: fixed;
