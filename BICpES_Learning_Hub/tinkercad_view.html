@@ -13,18 +13,19 @@
 
     <!-- NAV -->
     <nav>
-        <a href="main.html" class="left-side"><img src="Images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
+        <a href="main.php" class="left-side"><img src="Images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
         <div class="center">
-            <a href="main.html"><span><strong>BICpES</strong></span> Learning Hub</a>
+            <a href="main.php"><span><strong>BICpES</strong></span> Learning Hub</a>
         </div>
         <div class="right-side">
-            <div id="user-panel-root"></div>
+            <!-- FIX: static fallback nav for HTML pages (no PHP session here) -->
+            <a href="main.php">Home</a>
         </div>
     </nav>
 
     <!-- BREADCRUMB -->
     <div class="breadcrumb">
-        <a href="main.html">Home</a>
+        <a href="main.php">Home</a>
         <span class="sep">›</span>
         <span class="current">Tinkercad</span>
     </div>
@@ -169,7 +170,7 @@
 
     <!-- BACK -->
     <div class="back-bar">
-        <a href="main.html" class="back-link">← Back to Home</a>
+        <a href="main.php" class="back-link">← Back to Home</a>
     </div>
 
     <footer class="footer">
