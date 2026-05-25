@@ -6,7 +6,7 @@ require_once __DIR__ . '/nav_auth.php';
 $db = get_db();
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   AJAX / POST HANDLER  (all mutations go through here)
+    AJAX / POST HANDLER  (all mutations go through here)
 ══════════════════════════════════════════════════════════════════════════════ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
-   FETCH DATA FOR PAGE RENDER
+    FETCH DATA FOR PAGE RENDER
 ══════════════════════════════════════════════════════════════════════════════ */
 $topics   = $db->query('SELECT * FROM topics            ORDER BY topic_num ASC')->fetch_all(MYSQLI_ASSOC);
 $projects = $db->query('SELECT * FROM projects          ORDER BY created_at DESC')->fetch_all(MYSQLI_ASSOC);
