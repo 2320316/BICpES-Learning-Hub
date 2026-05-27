@@ -314,7 +314,6 @@ $category_img_fallback = 'Images/Projects/general.jpg';
 
         <?php echo nav_scripts_html(); ?>
 
-        <!-- ── FIX 2: Skill tab switcher ── -->
         <script>
         document.addEventListener('DOMContentLoaded', function () {
             var tabs = document.querySelectorAll('li.skill-tab');
