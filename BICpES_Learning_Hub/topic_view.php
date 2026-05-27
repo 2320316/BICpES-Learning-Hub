@@ -91,7 +91,7 @@ $hero_tag    = "Topic {$topic_num} · {$category}";
             <div class="hero-title">
                 <?= htmlspecialchars($rest) ?> <em><?= htmlspecialchars($last_word) ?></em>
             </div>
-            <p class="hero-desc"><?= htmlspecialchars($overview_paras[0]) ?></p>
+            <p class="hero-desc"><?= htmlspecialchars($topic['description']) ?></p>
         </div>
     </div>
 
@@ -102,9 +102,8 @@ $hero_tag    = "Topic {$topic_num} · {$category}";
         <div class="section">
             <div class="section-eyebrow">Overview</div>
             <h2>What is <?= $name ?>?</h2>
-            <?php if (count($overview_paras) > 1): ?>
-                <?php foreach ($overview_paras as $idx => $para): ?>
-                    <?php if ($idx === 0) continue; ?>
+            <?php if (!empty($overview_paras)): ?>
+                <?php foreach ($overview_paras as $para): ?>
                     <p><?= htmlspecialchars($para) ?></p>
                 <?php endforeach; ?>
             <?php else: ?>

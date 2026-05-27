@@ -307,7 +307,8 @@ function nav_scripts_html(): string
                 };
                 const res = await postAuth(payload);
                 if (res.success) {
-                    location.reload();   // PHP re-renders nav with user panel
+                    // Force a full page reload so PHP re-renders with the new session
+                    window.location.replace('main.php');
                 } else {
                     showFormMsg(loginForm, res.message, 'error');
                 }

@@ -106,7 +106,7 @@ $year       = (int)($project['year'] ?? 2026);
             </div>
         </div>
         <div class="hero-right">
-            <p class="hero-brief"><?= htmlspecialchars($overview_paras[0]) ?></p>
+            <p class="hero-brief"><?= htmlspecialchars($project['description']) ?></p>
         </div>
     </div>
 
@@ -145,11 +145,11 @@ $year       = (int)($project['year'] ?? 2026);
         <div class="section">
             <div class="section-eyebrow">Overview</div>
             <h2>About this Project</h2>
-            <?php foreach ($overview_paras as $idx => $para): ?>
-                <?php if ($idx === 0) continue; ?>
-                <p><?= htmlspecialchars($para) ?></p>
-            <?php endforeach; ?>
-            <?php if (count($overview_paras) <= 1): ?>
+            <?php if (!empty($overview_paras)): ?>
+                <?php foreach ($overview_paras as $para): ?>
+                    <p><?= htmlspecialchars($para) ?></p>
+                <?php endforeach; ?>
+            <?php else: ?>
                 <p><?= htmlspecialchars($project['description']) ?></p>
             <?php endif; ?>
             <p style="margin-top:14px;">

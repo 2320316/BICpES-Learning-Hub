@@ -18,7 +18,16 @@ $pill_labels = [
     'General'    => 'Featured',
 ];
 
-$ph_classes = ['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
+// Category → image filename map
+$category_images = [
+    'General'    => 'Images/Projects/general.jpg',
+    'Circuits'   => 'Images/Projects/circuits.jpg',
+    'Embedded'   => 'Images/Projects/embedded.jpg',
+    'IoT'        => 'Images/Projects/iot.jpg',
+    'PCB Design' => 'Images/Projects/pcb_design.jpg',
+    'Robotics'   => 'Images/Projects/robotics.jpg',
+];
+$category_img_fallback = 'Images/Projects/general.jpg';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +77,7 @@ $ph_classes = ['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
         <?php else: ?>
             <?php foreach ($projects as $i => $proj): ?>
                 <?php
-                    $ph    = $ph_classes[$i % count($ph_classes)];
+                    $cat_img = $category_images[$proj['category']] ?? $category_img_fallback;
                     $pill  = $pill_labels[$proj['category']] ?? $proj['category'];
                     $year  = $proj['year'] ?? 2026;
                     $cat   = htmlspecialchars($proj['category']);
@@ -76,7 +85,7 @@ $ph_classes = ['p1','p2','p3','p4','p5','p6','p7','p8','p9'];
                 ?>
                 <div class="project-card" data-category="<?= $cat ?>" style="cursor:pointer;" onclick="location.href='project_view.php?id=<?= $proj['id'] ?>'">
                     <div class="card-thumb">
-                        <div class="ph <?= $ph ?>"></div>
+                        <img class="ph" src="<?= htmlspecialchars($cat_img) ?>" alt="<?= $cat ?>">
                         <span class="card-pill"><?= htmlspecialchars($pill) ?></span>
                     </div>
                     <div class="card-body">

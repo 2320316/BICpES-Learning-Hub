@@ -345,6 +345,8 @@ input {
     margin-top: auto;
     flex-shrink: 0;
     box-shadow: 0 -10px 30px 0 rgba(170, 112, 209, 0.25);
+    position: relative;
+    overflow: visible;
 }
 
 .box_in {
@@ -390,10 +392,8 @@ ul {
 }
 
 ul li {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    font-style: italic;
     color: white;
     padding: 18px 22px;
     position: relative;
@@ -682,13 +682,16 @@ ul li:hover::before { width: 100%; opacity: 1; }
     margin-left: 80px;
     background: linear-gradient(#edf2fd, #9b46d4);
     border-radius: 40px;
-    color: #9b46d4;
+    color: #2a0a45;
     font-family: 'Manrope', sans-serif;
-    font-size: 16px;
+    font-size: clamp(17px, 1.6vw, 22px);
     font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.2px;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: justify;
+    padding: 52px 64px;
 }
 
 .about_text {
@@ -729,3 +732,39 @@ ul li:hover::before { width: 100%; opacity: 1; }
 }
 
 .links a:hover { color: #9b46d4; }
+
+.skills_box {
+    position: relative;
+}
+
+.skills_box .box {
+    z-index: 2;
+}
+
+.skills_box .box_in {
+    z-index: 0;
+}
+
+/* Skill images */
+.skill-img {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.inside_right_box {
+    position: relative;
+    overflow: hidden;
+}
+
+.topics-preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    display: block;
+}
