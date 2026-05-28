@@ -1,0 +1,29 @@
+{
+  "name": "bicpes-learning-hub",
+  "version": "2.0.0",
+  "description": "BICpES Learning Hub - E-learning platform for CPE students. Refactored for Vercel + Supabase",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vercel deploy --prod"
+  },
+  "keywords": [
+    "education",
+    "learning",
+    "circuits",
+    "embedded-systems",
+    "cpe",
+    "engineering"
+  ],
+  "author": "BICpES Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  }
+}

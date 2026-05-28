@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/design.css">
+    <link rel="stylesheet" href="../styles/projects_design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>BICpES Learning Hub — Projects</title>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="left-side"><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
+        <div class="center">
+            <a href="../index.html"><span><strong>BICpES</strong></span> Learning Hub</a>
+        </div>
+        <div class="right-side" id="navRight">
+            <!-- Populated by nav.js -->
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-title">Pro<em>jects</em></div>
+        <div class="hero-right">
+            <span class="hero-count" id="projectCount">0</span>
+            <p class="hero-sub">Hands-on builds from the CPE community — circuits, embedded systems, IoT, and more.</p>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Circuits">Circuits</button>
+        <button class="filter-btn" data-filter="Embedded">Embedded</button>
+        <button class="filter-btn" data-filter="IoT">IoT</button>
+        <button class="filter-btn" data-filter="PCB Design">PCB Design</button>
+        <button class="filter-btn" data-filter="Robotics">Robotics</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+        <p style="color:rgba(255,255,255,.4);padding:40px;">Loading projects...</p>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/pages/projects.js"></script>
+</body>
+</html>
