@@ -15,6 +15,7 @@ export default defineConfig({
         multisim: "public/pages/multisim.html",
         tinkercad: "public/pages/tinkercad.html",
         userProfile: "public/pages/user-profile.html",
+        adminDashboard: "public/pages/admin-dashboard.html",
       },
     },
   },

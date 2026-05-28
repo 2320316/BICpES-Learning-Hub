@@ -29,46 +29,33 @@ export default async function handler(req, res) {
         .json({ error: "Missing student number or password" });
     }
 
-    // Handle admin login
+    // Handle user login (both admin and student)
     let user = null;
-    if (student_number.toUpperCase() === "ADMIN") {
-      // Mock admin login for demo
-      if (password !== "admin123") {
-        return res.status(401).json({ error: "Invalid credentials" });
-      }
-      user = {
-        id: 0,
-        student_number: "ADMIN",
-        first_name: "Admin",
-        last_name: "User",
-        role: "admin",
-      };
-    } else {
-      // Regular student login
-      const { createClient } = await import("@supabase/supabase-js");
-      const supabase = createClient(
-        process.env.VITE_SUPABASE_URL,
-        process.env.VITE_SUPABASE_ANON_KEY,
-      );
 
-      const passwordHash = crypto
-        .createHash("sha256")
-        .update(password)
-        .digest("hex");
+    // All users are stored in the database with role field
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(
+      process.env.VITE_SUPABASE_URL,
+      process.env.VITE_SUPABASE_ANON_KEY,
+    );
 
-      const { data, error } = await supabase
-        .from("users")
-        .select("*")
-        .eq("student_number", student_number)
-        .eq("password_hash", passwordHash)
-        .single();
+    const passwordHash = crypto
+      .createHash("sha256")
+      .update(password)
+      .digest("hex");
 
-      if (error || !data) {
-        return res.status(401).json({ error: "Invalid credentials" });
-      }
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("student_number", student_number)
+      .eq("password_hash", passwordHash)
+      .single();
 
-      user = data;
+    if (error || !data) {
+      return res.status(401).json({ error: "Invalid credentials" });
     }
+
+    user = data;
 
     // Generate session token
     const token = crypto.randomBytes(32).toString("hex");

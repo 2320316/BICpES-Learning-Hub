@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/design.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .admin-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      .admin-section {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+      }
+      .admin-section h2 {
+        color: #fff;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .stat-card {
+        background: rgba(76, 175, 80, 0.1);
+        border: 1px solid rgba(76, 175, 80, 0.3);
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .stat-card .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #4caf50;
+        margin-bottom: 10px;
+      }
+      .stat-card .stat-label {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+      .admin-action {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        transition: transform 0.2s ease;
+      }
+      .admin-action:hover {
+        transform: scale(1.05);
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
+      }
+      .table thead {
+        background: rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+      }
+      .table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        color: #4caf50;
+      }
+      .table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .table tr:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html" class="left-side"
+        ><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"
+      /></a>
+
+      <div class="center">
+        <a href="../index.html"
+          ><span><strong>BICpES</strong></span> Learning Hub</a
+        >
+      </div>
+
+      <div class="right-side" id="navRight">
+        <!-- Populated by nav.js -->
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-title">Admin <em>Dashboard</em></div>
+      <div class="hero-right">
+        <p class="hero-sub">Manage projects, topics, and system settings</p>
+      </div>
+    </div>
+
+    <div class="admin-container">
+      <!-- Statistics Section -->
+      <div class="admin-section">
+        <h2>📊 System Overview</h2>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="userCount">-</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="projectCount">-</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="topicCount">-</div>
+            <div class="stat-label">Topics</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="toolCount">-</div>
+            <div class="stat-label">Simulation Tools</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Management Section -->
+      <div class="admin-section">
+        <h2>⚙️ System Management</h2>
+        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px">
+          Current features: Dashboard displays system statistics and overview.
+          Additional management tools will be added in future updates.
+        </p>
+        <button class="admin-action" onclick="loadStatistics()">
+          🔄 Refresh Statistics
+        </button>
+        <button class="admin-action" onclick="exportData()">
+          📥 Export Data
+        </button>
+        <button class="admin-action" onclick="logoutAdmin()">
+          🚪 Logout
+        </button>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="admin-section">
+        <h2>📋 Admin Info</h2>
+        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 15px">
+          You are logged in as admin. This dashboard provides system overview
+          and management capabilities.
+        </p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Information</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User ID</td>
+              <td id="adminId">-</td>
+            </tr>
+            <tr>
+              <td>Role</td>
+              <td id="adminRole">-</td>
+            </tr>
+            <tr>
+              <td>Session</td>
+              <td id="adminSession">-</td>
+            </tr>
+            <tr>
+              <td>API Status</td>
+              <td id="apiStatus">Checking...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/nav.js"></script>
+    <script>
+      // Set up API URL based on environment
+      const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      window.API_URL = isDev ? "http://localhost:3000/api" : "/api";
+    </script>
+    <script>
+      // Require admin access
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Check if user is logged in and is admin
+        const session = localStorage.getItem("bicpes_session");
+        if (!session) {
+          alert("Please login first");
+          location.href = "../index.html";
+          return;
+        }
+
+        const sessionData = JSON.parse(session);
+        if (sessionData.role !== "admin") {
+          alert("Admin access required");
+          location.href = "../index.html";
+          return;
+        }
+
+        // Display admin info
+        document.getElementById("adminId").textContent =
+          sessionData.user.id || "N/A";
+        document.getElementById("adminRole").textContent =
+          sessionData.role || "N/A";
+        document.getElementById("adminSession").textContent =
+          sessionData.token
+            ? sessionData.token.substring(0, 16) + "..."
+            : "N/A";
+
+        // Load statistics
+        await loadStatistics();
+        await checkApiStatus();
+      });
+
+      async function loadStatistics() {
+        try {
+          const apiUrl = window.API_URL || "/api";
+
+          // Fetch counts
+          const projectsResp = await fetch(`${apiUrl}/projects?limit=1`);
+          const topicsResp = await fetch(`${apiUrl}/topics?limit=1`);
+          const toolsResp = await fetch(`${apiUrl}/simulation-tools?limit=1`);
+
+          if (projectsResp.ok) {
+            const pData = await projectsResp.json();
+            document.getElementById("projectCount").textContent =
+              pData.total || pData.count || "?";
+          }
+
+          if (topicsResp.ok) {
+            const tData = await topicsResp.json();
+            document.getElementById("topicCount").textContent =
+              tData.total || tData.count || "?";
+          }
+
+          if (toolsResp.ok) {
+            const tlData = await toolsResp.json();
+            document.getElementById("toolCount").textContent =
+              tlData.total || tlData.count || "?";
+          }
+
+          // User count would need a separate endpoint
+          document.getElementById("userCount").textContent = "N/A";
+        } catch (error) {
+          console.error("Error loading statistics:", error);
+          alert("Could not load statistics: " + error.message);
+        }
+      }
+
+      async function checkApiStatus() {
+        try {
+          const apiUrl = window.API_URL || "/api";
+          const response = await fetch(`${apiUrl}/projects?limit=1`);
+          if (response.ok) {
+            document.getElementById("apiStatus").textContent =
+              "✅ Online (Functional)";
+          } else {
+            document.getElementById("apiStatus").textContent =
+              "⚠️ Response Error (" + response.status + ")";
+          }
+        } catch (error) {
+          document.getElementById("apiStatus").textContent =
+            "❌ Offline (Connection Failed)";
+        }
+      }
+
+      function exportData() {
+        alert(
+          "Data export feature coming soon. Contact support for data exports.",
+        );
+      }
+
+      function logoutAdmin() {
+        if (confirm("Are you sure you want to logout?")) {
+          localStorage.removeItem("bicpes_session");
+          location.href = "../index.html";
+        }
+      }
+    </script>
+  </body>
+</html>

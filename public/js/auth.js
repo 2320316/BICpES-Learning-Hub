@@ -54,7 +54,8 @@ async function signUp(
       throw new Error("Passwords do not match");
     }
 
-    const response = await fetch("/api/auth/signup", {
+    const apiUrl = window.API_URL || '/api';
+    const response = await fetch(`${apiUrl}/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -103,7 +104,8 @@ async function signUp(
  */
 async function login(studentNumber, password) {
   try {
-    const response = await fetch("/api/auth/login", {
+    const apiUrl = window.API_URL || '/api';
+    const response = await fetch(`${apiUrl}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -134,9 +136,13 @@ async function login(studentNumber, password) {
 
     updateAuthUI();
 
-    // Close login modal and redirect
+    // Close login modal and redirect based on role
     document.getElementById("login").style.display = "none";
-    location.href = "#topics";
+    if (data.role === "admin") {
+      location.href = "#admin-dashboard";
+    } else {
+      location.href = "#topics";
+    }
 
     return true;
   } catch (error) {
