@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run copy-static",
+    "copy-static": "mkdir -p dist/Materials dist/js && cp -r public/Materials/* dist/Materials 2>/dev/null || true && cp -r public/js/* dist/js/",
     "preview": "vite preview",
     "deploy": "vercel deploy --prod"
   },

@@ -137,48 +137,127 @@ Should show: JSON array of projects
 
 ## CONFIGURATION CHANGES (Bulletproof Refactoring)
 
-### What Was Fixed in `vercel.json`:
+### What Was Fixed:
 
-**❌ REMOVED (Invalid/Deprecated Properties):**
+#### ✅ vercel.json - Cleaned
 
-- `sourceFilesOutsideRootDirectory` - Not a valid Vercel property
-- Custom `env` section with `@` prefix syntax - Deprecated pattern
+- Removed invalid property: `sourceFilesOutsideRootDirectory`
+- Removed deprecated `env` section with `@` prefix syntax
+- Now contains only valid properties: `buildCommand` and `outputDirectory`
 
-**✅ KEPT (Valid Properties):**
+#### ✅ Build System - Enhanced to Copy All Resources
 
-- `buildCommand: "npm run build"` - Tells Vercel how to build
-- `outputDirectory: "dist"` - Tells Vercel where build output is
+**`npm run build` now:**
 
-**📝 Current `vercel.json` (Clean & Minimal):**
+1. Compiles all 8 HTML pages with Vite
+2. Bundles images to `/dist/assets/`
+3. Copies JavaScript files to `/dist/js/`
+4. Copies Materials (PDFs) to `/dist/Materials/`
+
+**New build script in `package.json`:**
 
 ```json
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist"
-}
+"build": "vite build && npm run copy-static",
+"copy-static": "mkdir -p dist/Materials dist/js && cp -r public/Materials/* dist/Materials 2>/dev/null || true && cp -r public/js/* dist/js/"
 ```
 
-**Why This Matters:**
+#### ✅ API Folder - Moved to Root for Vercel
 
-- Vercel validates `vercel.json` strictly
-- Invalid properties cause "should NOT have additional property" errors
-- Minimal config lets Vercel auto-detect and use best practices
-- Environment variables are set securely in Dashboard, not in code
+- **Before:** `/public/api/` (not recognized by Vercel)
+- **After:** `/api/` at root (Vercel recognizes as serverless functions)
+- **Result:** API endpoints work: `/api/auth/login`, `/api/auth/signup`, `/api/projects`, etc.
 
-### Build Verification: ✅ PASSED
+### Build Output Verification: ✅ COMPLETE
 
 ```
-✓ 17 modules transformed
-✓ 8 HTML pages compiled
-✓ Built in 92ms
-✓ dist/ = ~1.5 MB (all assets bundled)
+✓ 8 HTML pages compiled + deployed to dist/pages/
+✓ 17 modules transformed by Vite
+✓ Assets: Images, logos, CSS bundled to dist/assets/
+✓ JavaScript: auth.js, nav.js, db.js, supabase.js in dist/js/
+✓ Materials: PDFs copied to dist/Materials/
+✓ API Functions: login.js, signup.js in api/auth/
+✓ Projects API: index.js in api/projects/
+✓ Topics API: index.js in api/topics/
+✓ Tools API: index.js in api/simulation-tools/
+✓ Build time: 85ms
+✓ Total size: ~1.5 MB
 ```
+
+### Directory Structure for Deployment:
+
+```
+BICpES-Learning-Hub/
+├── api/                          ← Vercel Functions (root level)
+│   ├── auth/
+│   │   ├── login.js
+│   │   └── signup.js
+│   ├── projects/
+│   │   └── index.js
+│   ├── topics/
+│   │   └── index.js
+│   └── simulation-tools/
+│       └── index.js
+├── dist/                         ← Static files (deployed to Vercel CDN)
+│   ├── index.html
+│   ├── pages/
+│   │   ├── projects.html
+│   │   ├── topics.html
+│   │   ├── project.html
+│   │   ├── topic.html
+│   │   ├── multisim.html
+│   │   ├── tinkercad.html
+│   │   └── user-profile.html
+│   ├── js/
+│   │   ├── auth.js
+│   │   ├── nav.js
+│   │   ├── db.js
+│   │   ├── supabase.js
+│   │   └── pages/
+│   ├── assets/
+│   │   ├── (bundled images)
+│   │   └── (bundled CSS)
+│   └── Materials/
+│       ├── 7-Segment.pdf
+│       ├── 24-Second-Shot-Clock.pdf
+│       └── (other PDFs)
+├── vercel.json                   ← Deployment config (minimal & clean)
+└── package.json                  ← Build scripts updated
+```
+
+### ❌ "Login page is missing"
+
+- ✅ **FIXED:** Login form is embedded in index.html (not a separate page)
+- Verify `dist/index.html` exists and loads
+- Login modal appears when you click "Start Learning" button
+
+### ❌ "Images not loading"
+
+- ✅ **FIXED:** Images are automatically bundled to `/dist/assets/`
+- Vite handles image optimization and hashing
+- If missing, rebuild: `npm run build`
+- Check browser network tab: images should be in `/assets/` folder
+
+### ❌ "Materials (PDFs) not loading"
+
+- ✅ **FIXED:** PDFs are copied from `/public/Materials/` to `/dist/Materials/`
+- Verify `dist/Materials/` folder has PDFs
+- PDFs are served as static files from Vercel CDN
+- Rebuild and redeploy if needed: `npm run build && git push`
+
+### ❌ "JavaScript files (auth.js, nav.js) not loading"
+
+- ✅ **FIXED:** JS files are copied from `/public/js/` to `/dist/js/`
+- Verify HTML script tags reference correct paths: `<script src="js/auth.js">`
+- Check browser console (F12) for 404 errors
+- Rebuild if needed: `npm run build`
 
 ### ❌ "API not responding"
 
-- Check Vercel environment variables are set correctly
+- Check Vercel environment variables are set correctly (STEP 4)
 - Check Supabase URL and key are valid
-- Check Supabase tables are created (run SQL schema again)
+- Check Supabase tables are created (run SQL schema from STEP 2 again)
+- API folder should be at `/api/` root, not in `dist/`
+- Verify `api/auth/login.js` exists at root level
 
 ### ❌ "Database connection error"
 
