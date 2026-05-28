@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/auth.php'; ?>
 <?php require_once __DIR__ . '/nav_auth.php'; ?>
 <?php
-// ── Fetch first 3 projects and topics for homepage previews ──────────────────
+// ── Fetch first 3 projects and topics for homepage previews
 $db = get_db();
 
 $home_projects = [];
