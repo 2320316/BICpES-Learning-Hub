@@ -12,7 +12,7 @@ let allTopics = [];
 
 async function loadTopics() {
   try {
-    const apiUrl = window.API_URL || '/api';
+    const apiUrl = window.API_URL || "/api";
     const response = await fetch(`${apiUrl}/topics?limit=100`);
     if (!response.ok) throw new Error("Failed to fetch topics");
 

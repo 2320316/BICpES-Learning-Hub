@@ -60,7 +60,9 @@
 
     <script>
       // Set up API URL based on environment
-      const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const isDev =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
       window.API_URL = isDev ? "http://localhost:3000/api" : "/api";
     </script>
     <script src="../js/auth.js"></script>

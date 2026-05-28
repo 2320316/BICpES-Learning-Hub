@@ -312,7 +312,9 @@
       // Set up API URL based on environment
       // In production on Vercel: use /api (relative path works within same domain)
       // In development: use http://localhost:3000/api
-      const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const isDev =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
       window.API_URL = isDev ? "http://localhost:3000/api" : "/api";
       console.log("API URL configured:", window.API_URL);
     </script>

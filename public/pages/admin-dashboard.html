@@ -152,9 +152,7 @@
         <button class="admin-action" onclick="exportData()">
           📥 Export Data
         </button>
-        <button class="admin-action" onclick="logoutAdmin()">
-          🚪 Logout
-        </button>
+        <button class="admin-action" onclick="logoutAdmin()">🚪 Logout</button>
       </div>
 
       <!-- Recent Activity -->
@@ -197,7 +195,9 @@
     <script src="../js/nav.js"></script>
     <script>
       // Set up API URL based on environment
-      const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const isDev =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
       window.API_URL = isDev ? "http://localhost:3000/api" : "/api";
     </script>
     <script>
@@ -223,10 +223,9 @@
           sessionData.user.id || "N/A";
         document.getElementById("adminRole").textContent =
           sessionData.role || "N/A";
-        document.getElementById("adminSession").textContent =
-          sessionData.token
-            ? sessionData.token.substring(0, 16) + "..."
-            : "N/A";
+        document.getElementById("adminSession").textContent = sessionData.token
+          ? sessionData.token.substring(0, 16) + "..."
+          : "N/A";
 
         // Load statistics
         await loadStatistics();

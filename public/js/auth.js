@@ -54,7 +54,7 @@ async function signUp(
       throw new Error("Passwords do not match");
     }
 
-    const apiUrl = window.API_URL || '/api';
+    const apiUrl = window.API_URL || "/api";
     const response = await fetch(`${apiUrl}/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,7 +104,7 @@ async function signUp(
  */
 async function login(studentNumber, password) {
   try {
-    const apiUrl = window.API_URL || '/api';
+    const apiUrl = window.API_URL || "/api";
     const response = await fetch(`${apiUrl}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

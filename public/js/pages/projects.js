@@ -15,7 +15,7 @@ async function loadProjects() {
   const countSpan = document.getElementById("projectCount");
 
   try {
-    const apiUrl = window.API_URL || '/api';
+    const apiUrl = window.API_URL || "/api";
     const response = await fetch(`${apiUrl}/projects?limit=100`);
     if (!response.ok) throw new Error("Failed to fetch projects");
 
