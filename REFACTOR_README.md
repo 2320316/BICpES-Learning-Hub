@@ -1,6 +1,7 @@
 # BICpES Learning Hub - Refactored for Vercel + Supabase
 
 This is the modernized version of BICpES Learning Hub, refactored from a PHP/MySQL monolith to a **serverless, cloud-native architecture** using:
+
 - **Frontend**: Vercel (static hosting + serverless functions)
 - **Database**: Supabase PostgreSQL
 - **Authentication**: Supabase Auth
@@ -77,6 +78,7 @@ cp .env.example .env.local
 ```
 
 Edit `.env.local`:
+
 ```env
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -106,27 +108,32 @@ vercel
 ```
 
 During deployment, configure environment variables in Vercel Dashboard:
+
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
 ## 📋 API Routes (Serverless Functions)
 
 ### Authentication
+
 - `POST /api/auth/signup` - Register new user
 - `POST /api/auth/login` - Login user
 - `POST /api/auth/logout` - Logout user
 
 ### Projects
+
 - `GET /api/projects` - Get all projects (paginated)
 - `GET /api/projects/:id` - Get project details
 - `GET /api/projects/search?q=keyword` - Search projects
 
 ### Topics
+
 - `GET /api/topics` - Get all topics (paginated)
 - `GET /api/topics/:id` - Get topic details
 - `GET /api/topics/search?q=keyword` - Search topics
 
 ### Tools
+
 - `GET /api/simulation-tools` - Get all simulation tools
 
 ## 🔐 Security Best Practices
@@ -140,6 +147,7 @@ During deployment, configure environment variables in Vercel Dashboard:
 ## 📦 Database Schema
 
 ### Tables
+
 - **users** - Student and admin accounts
 - **projects** - Learning projects with components and procedures
 - **topics** - Course topics and learning materials
@@ -151,11 +159,13 @@ All tables use PostgreSQL with JSONB for structured data (components, activities
 ## 🎨 Frontend Features
 
 ### Authentication
+
 - Login/Signup modal
 - Session management
 - Role-based access (student/admin)
 
 ### Homepage
+
 - Featured projects preview (3 items)
 - Featured topics preview (3 items)
 - Skills showcase with rotating images
@@ -164,6 +174,7 @@ All tables use PostgreSQL with JSONB for structured data (components, activities
 - Responsive design
 
 ### Dynamic Loading
+
 - JavaScript fetches data from API
 - No server-side rendering needed
 - Works on Vercel's free tier
@@ -171,6 +182,7 @@ All tables use PostgreSQL with JSONB for structured data (components, activities
 ## 🔄 Migration from Old System
 
 ### What Changed
+
 - ✅ No more PHP
 - ✅ No more local MySQL
 - ✅ No more session files
@@ -178,36 +190,42 @@ All tables use PostgreSQL with JSONB for structured data (components, activities
 - ✅ Global CDN distribution
 
 ### Data Migration
+
 Run `database/001_init.sql` on your Supabase instance to create all tables with sample data.
 
 ## 🛠️ Maintenance
 
 ### Adding New Pages
+
 1. Create HTML in `public/pages/yourpage.html`
 2. Create JS module in `public/js/yourpage.js`
 3. Import CSS from `public/styles/`
 4. Add to navigation in `public/js/nav.js`
 
 ### Adding New API Routes
+
 Create file: `public/api/your-endpoint/index.js`
 
 Example:
+
 ```javascript
 export default function handler(req, res) {
-    if (req.method === 'GET') {
-        return res.status(200).json({ message: 'Success' });
-    }
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (req.method === "GET") {
+    return res.status(200).json({ message: "Success" });
+  }
+  return res.status(405).json({ message: "Method not allowed" });
 }
 ```
 
 ### Database Modifications
+
 Create new migration file: `database/002_your_migration.sql`
 Run in Supabase SQL Editor.
 
 ## 📱 Responsive Design
 
 Optimized for:
+
 - 📱 Mobile (320px+)
 - 📱 Tablet (768px+)
 - 💻 Desktop (1024px+)
@@ -217,22 +235,26 @@ CSS uses `clamp()` for fluid typography and layouts.
 ## 🚨 Troubleshooting
 
 ### "Cannot fetch data"
+
 - Check Supabase URL and key in `.env.local`
 - Verify database tables exist
 - Check browser console for CORS errors
 
 ### "Login not working"
+
 - Verify `/api/auth/login` endpoint exists
 - Check Supabase authentication settings
 - Ensure RLS policies allow public access for signup
 
 ### "Images not loading"
+
 - Check image paths in `public/images/`
 - Verify relative paths in HTML (use `images/` prefix)
 
 ## 📞 Support
 
 For issues, check:
+
 1. Supabase documentation: https://supabase.com/docs
 2. Vercel documentation: https://vercel.com/docs
 3. Project GitHub Issues

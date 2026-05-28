@@ -1,223 +1,315 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/design.css">
-    <link rel="stylesheet" type="text/css" href="styles/user_design.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/design.css" />
+    <link rel="stylesheet" type="text/css" href="styles/user_design.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>BICpES Learning Hub</title>
     <style>
-        html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        /* ── SKILLS: photo sits centered inside .box; gradient & glass still visible ── */
-        .skills_box {
-            position: relative;
-        }
-        /* .box = gradient background — clips nothing, shows as frame */
-        .box {
-            position: relative !important;
-            overflow: visible !important;  /* gradient peeks around photo */
-        }
-        /* .box_in = glass panel, bigger than .box, behind everything */
-        .box_in {
-            position: absolute !important;
-            top: 46% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: 113% !important;   /* wider than .box so it peeks out */
-            height: 110% !important;  /* taller than .box so it peeks out */
-            z-index: 0 !important;
-            pointer-events: none !important;
-        }
-        /* photo sits centered on top, smaller than .box so gradient shows */
-        .skill-img {
-            position: absolute !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: 95% !important;
-            height: 95% !important;
-            object-fit: cover !important;
-            object-position: center !important;
-            border-radius: 16px !important;
-            display: block !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            z-index: 2 !important;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .skill-tab,
-        .skills_section,
-        .skills-container,
-        .skills_items,
-        .skill_list ul li,
-        [class*="skill"] {
-            font-family: 'Manrope', sans-serif !important;
-        }
+      /* ── SKILLS: photo sits centered inside .box; gradient & glass still visible ── */
+      .skills_box {
+        position: relative;
+      }
+      /* .box = gradient background — clips nothing, shows as frame */
+      .box {
+        position: relative !important;
+        overflow: visible !important; /* gradient peeks around photo */
+      }
+      /* .box_in = glass panel, bigger than .box, behind everything */
+      .box_in {
+        position: absolute !important;
+        top: 46% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 113% !important; /* wider than .box so it peeks out */
+        height: 110% !important; /* taller than .box so it peeks out */
+        z-index: 0 !important;
+        pointer-events: none !important;
+      }
+      /* photo sits centered on top, smaller than .box so gradient shows */
+      .skill-img {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 95% !important;
+        height: 95% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 16px !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 2 !important;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+      .skill-tab,
+      .skills_section,
+      .skills-container,
+      .skills_items,
+      .skill_list ul li,
+      [class*="skill"] {
+        font-family: "Manrope", sans-serif !important;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
-        <a href="#home" class="left-side"><img src="images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
+      <a href="#home" class="left-side"
+        ><img src="images/Logo/BICpES Learning Hub Logo.png" alt="Logo"
+      /></a>
 
-        <div class="center">
-            <a href="#about_us">About Us</a>
-            <a href="#topics">Topics</a>
-            <a href="#projects">Projects</a>
-            <a href="#tools">Tools</a>
-        </div>
+      <div class="center">
+        <a href="#about_us">About Us</a>
+        <a href="#topics">Topics</a>
+        <a href="#projects">Projects</a>
+        <a href="#tools">Tools</a>
+      </div>
 
-        <div class="right-side" id="navRight">
-            <!-- Dynamically populated by nav.js -->
-        </div>
+      <div class="right-side" id="navRight">
+        <!-- Dynamically populated by nav.js -->
+      </div>
     </nav>
 
     <!-- Login/Signup Form -->
     <section class="container-log" id="login">
-        <div class="log-container">
-            <a href="#stay" class="close_btn">&times;</a>
-            <div class="new_acc">
-                <form id="signupForm">
-                    <h1>Create Account</h1>
-                    <input type="number" id="signupStudentNumber" placeholder="Student Number" required/><br>
-                    <input type="text" id="signupLastName" placeholder="Last Name" required/><br>
-                    <input type="text" id="signupFirstName" placeholder="First Name" required/><br>
-                    <input type="date" id="signupBirthdate" name="birthdate" required/><br>
-                    <input type="password" id="signupPassword" placeholder="Password" required/><br>
-                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required/><br>
-                    <button type="submit">Sign Up</button>
-                </form>
-            </div>
-
-            <div class="old_acc">
-                <form id="loginForm">
-                    <h1>Login</h1>
-                    <p style="font-size:12px;color:rgba(245,245,245,.55);margin-bottom:8px;line-height:1.5;">
-                        Students: enter your Student Number.<br>
-                        Admin: enter <strong>ADMIN</strong> as the identifier.
-                    </p>
-                    <input type="text" id="loginStudentNumber" placeholder="Student Number" required/><br>
-                    <input type="password" id="loginPassword" placeholder="Password" required/><br>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay_left">
-                        <h1>Welcome Back!</h1>
-                        <p>Explore more with us — please login with your existing account</p>
-                        <button id="signIn">Login</button>
-                    </div>
-                    <div class="overlay_right">
-                        <h1>Hello, Fellow CPE Student!</h1>
-                        <p>Enter your personal details and start your journey with us</p>
-                        <button id="signUp">Sign Up</button>
-                    </div>
-                </div>
-            </div>
+      <div class="log-container">
+        <a href="#stay" class="close_btn">&times;</a>
+        <div class="new_acc">
+          <form id="signupForm">
+            <h1>Create Account</h1>
+            <input
+              type="number"
+              id="signupStudentNumber"
+              placeholder="Student Number"
+              required
+            /><br />
+            <input
+              type="text"
+              id="signupLastName"
+              placeholder="Last Name"
+              required
+            /><br />
+            <input
+              type="text"
+              id="signupFirstName"
+              placeholder="First Name"
+              required
+            /><br />
+            <input
+              type="date"
+              id="signupBirthdate"
+              name="birthdate"
+              required
+            /><br />
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Password"
+              required
+            /><br />
+            <input
+              type="password"
+              id="signupConfirmPassword"
+              placeholder="Confirm Password"
+              required
+            /><br />
+            <button type="submit">Sign Up</button>
+          </form>
         </div>
+
+        <div class="old_acc">
+          <form id="loginForm">
+            <h1>Login</h1>
+            <p
+              style="
+                font-size: 12px;
+                color: rgba(245, 245, 245, 0.55);
+                margin-bottom: 8px;
+                line-height: 1.5;
+              "
+            >
+              Students: enter your Student Number.<br />
+              Admin: enter <strong>ADMIN</strong> as the identifier.
+            </p>
+            <input
+              type="text"
+              id="loginStudentNumber"
+              placeholder="Student Number"
+              required
+            /><br />
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Password"
+              required
+            /><br />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay_left">
+              <h1>Welcome Back!</h1>
+              <p>
+                Explore more with us — please login with your existing account
+              </p>
+              <button id="signIn">Login</button>
+            </div>
+            <div class="overlay_right">
+              <h1>Hello, Fellow CPE Student!</h1>
+              <p>Enter your personal details and start your journey with us</p>
+              <button id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="home">
-        <div class="headings">
-            <h1>BICpES Learning Hub</h1>
-            <h2>Discover, Learn, and Grow with us</h2>
-            <h3>Explore topics, tools, and concepts that will guide you through your CpE journey</h3>
-        </div>
-        <a href="#" id="startLearningBtn">
-            <button class="learn">Start Learning</button>
-        </a>
+      <div class="headings">
+        <h1>BICpES Learning Hub</h1>
+        <h2>Discover, Learn, and Grow with us</h2>
+        <h3>
+          Explore topics, tools, and concepts that will guide you through your
+          CpE journey
+        </h3>
+      </div>
+      <a href="#" id="startLearningBtn">
+        <button class="learn">Start Learning</button>
+      </a>
 
-        <!-- ── SKILLS BOX: images live inside .box and .box_in ── -->
-        <div class="skills_box">
-            <div class="box">
-                <div class="box_in"></div>
-                <img class="skill-img" id="skill-img-solving"
-                    src="images/Skills/Solving.jpg" alt="Solving"
-                    onerror="this.style.display='none'">
-                <img class="skill-img" id="skill-img-designing"
-                    src="images/Skills/Designing.jpg" alt="Designing"
-                    onerror="this.style.display='none'">
-                <img class="skill-img" id="skill-img-etching"
-                    src="images/Skills/Etching.jpg" alt="Etching"
-                    onerror="this.style.display='none'">
-                <img class="skill-img" id="skill-img-soldering"
-                    src="images/Skills/Soldering.jpg" alt="Soldering"
-                    onerror="this.style.display='none'">
-            </div>
+      <!-- ── SKILLS BOX: images live inside .box and .box_in ── -->
+      <div class="skills_box">
+        <div class="box">
+          <div class="box_in"></div>
+          <img
+            class="skill-img"
+            id="skill-img-solving"
+            src="images/Skills/Solving.jpg"
+            alt="Solving"
+            onerror="this.style.display = 'none'"
+          />
+          <img
+            class="skill-img"
+            id="skill-img-designing"
+            src="images/Skills/Designing.jpg"
+            alt="Designing"
+            onerror="this.style.display = 'none'"
+          />
+          <img
+            class="skill-img"
+            id="skill-img-etching"
+            src="images/Skills/Etching.jpg"
+            alt="Etching"
+            onerror="this.style.display = 'none'"
+          />
+          <img
+            class="skill-img"
+            id="skill-img-soldering"
+            src="images/Skills/Soldering.jpg"
+            alt="Soldering"
+            onerror="this.style.display = 'none'"
+          />
         </div>
+      </div>
     </section>
 
     <section id="skills">
-        <ul>
-            <li class="skill-tab active" data-skill="solving">Solving</li>
-            <li class="skill-tab"        data-skill="designing">Designing</li>
-            <li class="skill-tab"        data-skill="etching">Etching</li>
-            <li class="skill-tab"        data-skill="soldering">Soldering</li>
-        </ul>
+      <ul>
+        <li class="skill-tab active" data-skill="solving">Solving</li>
+        <li class="skill-tab" data-skill="designing">Designing</li>
+        <li class="skill-tab" data-skill="etching">Etching</li>
+        <li class="skill-tab" data-skill="soldering">Soldering</li>
+      </ul>
     </section>
 
     <!-- ── PROJECTS SECTION ─────────────────────────────────────────── -->
     <section id="projects">
-        <h1>Projects</h1>
-        <div class="projects_container" id="homeProjects">
-            <!-- Populated by JavaScript -->
-        </div>
-        <a href="pages/projects.html" id="viewMoreProjectsBtn"><h2>VIEW MORE</h2></a>
+      <h1>Projects</h1>
+      <div class="projects_container" id="homeProjects">
+        <!-- Populated by JavaScript -->
+      </div>
+      <a href="pages/projects.html" id="viewMoreProjectsBtn"
+        ><h2>VIEW MORE</h2></a
+      >
     </section>
 
     <!-- ── TOPICS SECTION ──────────────────────────────────────────── -->
     <section id="topics">
-        <div class="topics_container">
-            <h1>Topics</h1>
-            <div id="homeTopics">
-                <!-- Populated by JavaScript -->
-            </div>
-            <a href="pages/topics.html" id="viewMoreTopicsBtn"><h2>VIEW MORE</h2></a>
+      <div class="topics_container">
+        <h1>Topics</h1>
+        <div id="homeTopics">
+          <!-- Populated by JavaScript -->
         </div>
+        <a href="pages/topics.html" id="viewMoreTopicsBtn"
+          ><h2>VIEW MORE</h2></a
+        >
+      </div>
 
-        <!-- ── TOPICS RIGHT BOX: topic image inside .inside_right_box ── -->
-        <div class="right_box">
-            <div class="inside_right_box">
-                <img src="images/Topics/topics_preview.jpg" alt="Topics Preview" class="topics-preview-img">
-            </div>
+      <!-- ── TOPICS RIGHT BOX: topic image inside .inside_right_box ── -->
+      <div class="right_box">
+        <div class="inside_right_box">
+          <img
+            src="images/Topics/topics_preview.jpg"
+            alt="Topics Preview"
+            class="topics-preview-img"
+          />
         </div>
+      </div>
 
-        <div class="under_box"></div>
+      <div class="under_box"></div>
     </section>
 
     <section id="tools">
-        <h1>Simulation Tools</h1>
-        <div class="simulation_tools" id="simulationTools">
-            <!-- Populated by JavaScript -->
-        </div>
+      <h1>Simulation Tools</h1>
+      <div class="simulation_tools" id="simulationTools">
+        <!-- Populated by JavaScript -->
+      </div>
     </section>
 
     <section id="about_us">
-        <div class="left_box">BICpES Learning Hub, a dedicated e-learning system, engineered to bridge the gap between complex engineering concepts and practical academic success. 
-                            As a specialized e-learning platform, our mission is to empower the next generation of Computer Engineers by providing high-quality, structured, and accessible 
-                            learning resources. We foster an inclusive and technically robust learning environment where lower-year engineering students can confidently master core concepts, 
-                            accelerate their proficiency and smoothly transition from theoretical knowledge to hands-on implementation. </div>
-        <div class="about_text"><p>About Us</p></div>
+      <div class="left_box">
+        BICpES Learning Hub, a dedicated e-learning system, engineered to bridge
+        the gap between complex engineering concepts and practical academic
+        success. As a specialized e-learning platform, our mission is to empower
+        the next generation of Computer Engineers by providing high-quality,
+        structured, and accessible learning resources. We foster an inclusive
+        and technically robust learning environment where lower-year engineering
+        students can confidently master core concepts, accelerate their
+        proficiency and smoothly transition from theoretical knowledge to
+        hands-on implementation.
+      </div>
+      <div class="about_text"><p>About Us</p></div>
     </section>
 
     <footer class="footer">
-        <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
-        <div class="links">
-            <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
-        </div>
+      <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+      <div class="links">
+        <a href="https://www.facebook.com/BICpES" target="_blank"
+          ><strong>Facebook</strong></a
+        >
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="js/auth.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>

@@ -42,6 +42,7 @@ This guide walks you through deploying the refactored BICpES Learning Hub to pro
 ### 1.4 Configure Row Level Security (RLS)
 
 Supabase has already enabled RLS in the SQL. Verify in **Authentication** → **Policies**:
+
 - ✅ Projects are publicly readable
 - ✅ Topics are publicly readable
 - ✅ Tools are publicly readable
@@ -89,6 +90,7 @@ vercel
 ### 2.4 Configure Environment Variables
 
 **Option A: Via CLI**
+
 ```bash
 vercel env add VITE_SUPABASE_URL
 # Paste: https://xxxxx.supabase.co
@@ -98,6 +100,7 @@ vercel env add VITE_SUPABASE_ANON_KEY
 ```
 
 **Option B: Via Dashboard**
+
 1. Go to [vercel.com/dashboard](https://vercel.com/dashboard)
 2. Select your project
 3. Go to **Settings** → **Environment Variables**
@@ -137,6 +140,7 @@ vercel --prod
 ### 3.3 Check Browser Console
 
 Open DevTools (F12) → Console:
+
 - Should NOT see 401/CORS errors
 - API responses should show in Network tab
 
@@ -175,9 +179,11 @@ Open DevTools (F12) → Console:
 ### Enable Logs
 
 **Supabase Logs**:
+
 1. Go to **Logs** → **API** or **Database** to monitor queries
 
 **Vercel Logs**:
+
 1. Go to **Settings** → **Environment** → View deployment logs
 
 ## 🔄 Updating Your Site
@@ -228,11 +234,13 @@ npm run dev
 ### Error: "Cannot reach Supabase"
 
 **Solution**: Verify environment variables
+
 ```bash
 vercel env list
 ```
 
 Re-add if missing:
+
 ```bash
 vercel env add VITE_SUPABASE_URL
 vercel env add VITE_SUPABASE_ANON_KEY
@@ -242,18 +250,21 @@ vercel --prod
 ### Error: "501 Not Implemented"
 
 **Solution**: API route not found
+
 - Check function names match `/api/path/index.js`
 - Redeploy: `vercel --prod`
 
 ### Error: "CORS error"
 
 **Solution**: Headers already set in API
+
 - Check `res.setHeader` in API routes
 - Ensure no duplicate headers
 
 ### Projects/Topics not loading
 
 **Solution**: Database might be empty
+
 - Run `database/001_init.sql` again in Supabase SQL Editor
 - Verify sample data inserted:
   ```sql

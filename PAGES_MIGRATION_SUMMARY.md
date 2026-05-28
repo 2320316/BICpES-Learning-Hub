@@ -9,10 +9,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ## 📋 Pages Migrated
 
 ### 1. **Homepage / Main Page**
+
 **Source:** `main.php`  
 **Target:** `public/index.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Navigation bar with logo, menu links, and auth panel
 - Login/Signup forms (modal)
 - Hero section with call-to-action
@@ -28,10 +30,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 2. **Projects Listing Page**
+
 **Source:** `projects_section.php`  
 **Target:** `public/pages/projects.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Hero section with project count
 - Filter buttons by category (All, Circuits, Embedded, IoT, PCB Design, Robotics)
 - Projects grid with cards
@@ -47,10 +51,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 3. **Topics Listing Page**
+
 **Source:** `topics_section.php`  
 **Target:** `public/pages/topics.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Hero section with subtitle
 - Search bar (client-side search)
 - Discipline cards showing categories (Circuits & Electronics, Digital Systems, etc.)
@@ -68,10 +74,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 4. **Project Detail Page**
+
 **Source:** `project_view.php`  
 **Target:** `public/pages/project.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Breadcrumb navigation (Home > Projects > [Title])
 - Hero section with project title, tag, category, and description
 - Overview section with formatted paragraphs
@@ -87,10 +95,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 5. **Topic Detail Page**
+
 **Source:** `topic_view.php`  
 **Target:** `public/pages/topic.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Breadcrumb navigation (Home > Topics > [Title])
 - Hero section with topic number, name, category, and description
 - Overview section with formatted paragraphs
@@ -106,10 +116,12 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 6. **Multisim Tool Page**
+
 **Source:** `multisim_view.html`  
 **Target:** `public/pages/multisim.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Breadcrumb navigation
 - Hero section (Software & Simulation)
 - Overview of Multisim
@@ -119,16 +131,19 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 - Back to home link
 
 **External Links:**
+
 - NI Multisim Official Download: https://www.ni.com/en/support/downloads/software-products/download.multisim.html
 - NI Tutorials: https://www.ni.com/en/support/documentation/supplemental/06/multisim-tutorials.html
 
 ---
 
 ### 7. **Tinkercad Tool Page**
+
 **Source:** `tinkercad_view.html`  
 **Target:** `public/pages/tinkercad.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Breadcrumb navigation
 - Hero section (Software & Simulation)
 - Overview of Tinkercad
@@ -138,16 +153,19 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 - Back to home link
 
 **External Links:**
+
 - Tinkercad: https://www.tinkercad.com
 - Tinkercad Learn: https://www.tinkercad.com/learn/circuits
 
 ---
 
 ### 8. **User Profile / Account Panel**
+
 **Source:** `user_panel.html`  
 **Target:** `public/pages/user-profile.html`  
 **Status:** ✅ COMPLETE  
 **Features:**
+
 - Profile card with avatar, name, and student ID
 - Menu items:
   - Edit Information (modal)
@@ -168,13 +186,15 @@ All HTML pages from the PHP files in `BICpES_Learning_Hub/` have been successful
 ---
 
 ### 9. **Admin Dashboard**
+
 **Source:** `admin_dashboard.php`  
 **Status:** ⚠️ PARTIAL (API only)  
 **Note:** The admin dashboard is implemented as REST API endpoints (Vercel Functions), not as a static HTML page. See `public/api/` for the serverless functions.
 
 **Admin Functions Available via API:**
+
 - Topic CRUD operations
-- Project CRUD operations  
+- Project CRUD operations
 - Tool CRUD operations
 
 ---
@@ -228,6 +248,7 @@ public/
 ## 🔗 Navigation Links
 
 ### From Homepage (index.html):
+
 - ✅ About Us → Scroll to #about_us
 - ✅ Topics → `pages/topics.html`
 - ✅ Projects → `pages/projects.html`
@@ -237,26 +258,32 @@ public/
 - ✅ User Panel → `pages/user-profile.html` (if logged in)
 
 ### From Projects Page (pages/projects.html):
+
 - ✅ Back to Home → `../index.html`
 - ✅ Project Card → `project.html?id={id}`
 
 ### From Project Detail (pages/project.html):
+
 - ✅ Back to Projects → `projects.html`
 - ✅ Home → `../index.html`
 
 ### From Topics Page (pages/topics.html):
+
 - ✅ Back to Home → `../index.html`
 - ✅ Topic Row → `topic.html?id={id}`
 
 ### From Topic Detail (pages/topic.html):
+
 - ✅ Back to Topics → `topics.html`
 - ✅ Home → `../index.html`
 
 ### From Tool Pages (multisim.html, tinkercad.html):
+
 - ✅ Back to Home → `../index.html`
 - ✅ External Links to official sites
 
 ### From User Profile (pages/user-profile.html):
+
 - ✅ Back to Home → `../index.html`
 - ✅ Logout → `../index.html`
 
@@ -264,37 +291,40 @@ public/
 
 ## 🔐 Authentication
 
-| Page | Login Required | Behavior |
-|------|---|---|
-| index.html | No | Show preview, redirect to login for "Start Learning" |
-| projects.html | Yes | Redirects to login if not authenticated |
-| topics.html | Yes | Redirects to login if not authenticated |
-| project.html | Yes | Redirects to login if not authenticated |
-| topic.html | Yes | Redirects to login if not authenticated |
-| multisim.html | No | Available to all |
-| tinkercad.html | No | Available to all |
-| user-profile.html | Yes | Redirects to login if not authenticated |
+| Page              | Login Required | Behavior                                             |
+| ----------------- | -------------- | ---------------------------------------------------- |
+| index.html        | No             | Show preview, redirect to login for "Start Learning" |
+| projects.html     | Yes            | Redirects to login if not authenticated              |
+| topics.html       | Yes            | Redirects to login if not authenticated              |
+| project.html      | Yes            | Redirects to login if not authenticated              |
+| topic.html        | Yes            | Redirects to login if not authenticated              |
+| multisim.html     | No             | Available to all                                     |
+| tinkercad.html    | No             | Available to all                                     |
+| user-profile.html | Yes            | Redirects to login if not authenticated              |
 
 ---
 
 ## 🗄️ Database Integration
 
 ### Projects Table
+
 ```
-id, title, description, requirements, difficulty, category, 
+id, title, description, requirements, difficulty, category,
 year, hero_tag, overview_body, components_json, procedure_steps,
 video_title, video_duration, video_url, video_type, created_at
 ```
 
 ### Topics Table
+
 ```
 id, topic_num, name, description, category, overview_body,
 pdf_filename, activities_json, created_at
 ```
 
 ### Users Table
+
 ```
-id, student_number, first_name, last_name, birthdate, 
+id, student_number, first_name, last_name, birthdate,
 password_hash, role, created_at
 ```
 
@@ -302,13 +332,13 @@ password_hash, role, created_at
 
 ## 📊 API Endpoints
 
-| Method | Endpoint | Purpose | Auth Required |
-|--------|----------|---------|---|
-| GET | `/api/projects` | Fetch all/filtered projects | No |
-| GET | `/api/topics` | Fetch all/filtered topics | No |
-| GET | `/api/simulation-tools` | Fetch all tools | No |
-| POST | `/api/auth/signup` | Register new student | No |
-| POST | `/api/auth/login` | Authenticate user | No |
+| Method | Endpoint                | Purpose                     | Auth Required |
+| ------ | ----------------------- | --------------------------- | ------------- |
+| GET    | `/api/projects`         | Fetch all/filtered projects | No            |
+| GET    | `/api/topics`           | Fetch all/filtered topics   | No            |
+| GET    | `/api/simulation-tools` | Fetch all tools             | No            |
+| POST   | `/api/auth/signup`      | Register new student        | No            |
+| POST   | `/api/auth/login`       | Authenticate user           | No            |
 
 ---
 
@@ -323,7 +353,7 @@ password_hash, role, created_at
 ✅ **Modal Dialogs** - User profile edit/password change  
 ✅ **Breadcrumb Navigation** - Clear page hierarchy  
 ✅ **Smooth Scrolling** - Enhanced UX  
-✅ **External Links** - Tool documentation and tutorials  
+✅ **External Links** - Tool documentation and tutorials
 
 ---
 
@@ -361,6 +391,6 @@ All PHP files from `BICpES_Learning_Hub/` have been successfully converted to st
 **Total Pages Created:** 9  
 **Total API Endpoints:** 5  
 **Images:** ~15 files  
-**PDFs:** 5 files  
+**PDFs:** 5 files
 
 Ready for production deployment! 🎉

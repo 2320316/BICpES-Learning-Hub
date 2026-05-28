@@ -1,405 +1,560 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BICpES — Topic Detail</title>
-    <link rel="stylesheet" type="text/css" href="../styles/design.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/design.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        html { scroll-behavior: smooth; }
-        
-        .breadcrumb {
-            padding: 24px 60px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            font-size: 14px;
-            background: rgba(30,30,30,0.5);
-            border-bottom: 1px solid rgba(245,245,245,0.10);
-        }
-        .breadcrumb a { color: #9b46d4; text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb .sep { color: rgba(245,245,245,0.40); }
-        .breadcrumb .current { color: rgba(245,245,245,0.70); }
-        
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .breadcrumb {
+        padding: 24px 60px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 14px;
+        background: rgba(30, 30, 30, 0.5);
+        border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+      }
+      .breadcrumb a {
+        color: #9b46d4;
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        text-decoration: underline;
+      }
+      .breadcrumb .sep {
+        color: rgba(245, 245, 245, 0.4);
+      }
+      .breadcrumb .current {
+        color: rgba(245, 245, 245, 0.7);
+      }
+
+      .hero {
+        padding: 60px 80px;
+        background: linear-gradient(
+          135deg,
+          rgba(155, 70, 212, 0.08) 0%,
+          rgba(155, 70, 212, 0.03) 100%
+        );
+        border-bottom: 1px solid rgba(155, 70, 212, 0.2);
+      }
+      .hero-tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(155, 70, 212, 0.8);
+        margin-bottom: 12px;
+      }
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: #cc88f5;
+      }
+      .hero-desc {
+        font-size: 15px;
+        color: rgba(245, 245, 245, 0.7);
+        line-height: 1.6;
+      }
+
+      .content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .section {
+        margin-bottom: 60px;
+      }
+      .section-eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(155, 70, 212, 0.8);
+        margin-bottom: 12px;
+      }
+      .section h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+      .section p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(245, 245, 245, 0.75);
+        margin-bottom: 16px;
+      }
+
+      .pdf-viewer-wrap {
+        background: rgba(30, 30, 30, 0.6);
+        border: 1px solid rgba(155, 70, 212, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .pdf-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(155, 70, 212, 0.15);
+        background: rgba(20, 20, 20, 0.6);
+      }
+
+      .pdf-toolbar-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .pdf-icon {
+        font-size: 20px;
+      }
+      .pdf-filename {
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .pdf-filetype {
+        display: inline-block;
+        font-size: 10px;
+        padding: 2px 8px;
+        background: rgba(155, 70, 212, 0.15);
+        color: #cc88f5;
+        border-radius: 4px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .pdf-toolbar-right {
+        display: flex;
+        gap: 8px;
+      }
+
+      .pdf-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        background: rgba(155, 70, 212, 0.2);
+        color: #cc88f5;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.2s;
+        border: 1px solid rgba(155, 70, 212, 0.3);
+      }
+
+      .pdf-btn:hover {
+        background: rgba(155, 70, 212, 0.3);
+        color: #fff;
+      }
+
+      .pdf-frame-container {
+        position: relative;
+        height: 500px;
+        background: rgba(10, 10, 10, 0.5);
+      }
+
+      .pdf-frame-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .pdf-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: rgba(155, 70, 212, 0.06);
+        border: 2px dashed rgba(155, 70, 212, 0.3);
+      }
+
+      .pdf-placeholder-icon {
+        width: 48px;
+        height: 48px;
+        opacity: 0.3;
+      }
+
+      .pdf-placeholder-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .pdf-placeholder-text {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(155, 70, 212, 0.6);
+      }
+
+      .pdf-placeholder-sub {
+        font-size: 12px;
+        color: rgba(245, 245, 245, 0.4);
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .activity-card {
+        padding: 24px;
+        background: rgba(30, 30, 30, 0.6);
+        border: 1px solid rgba(155, 70, 212, 0.2);
+        border-radius: 12px;
+        transition: all 0.3s;
+      }
+
+      .activity-card:hover {
+        background: rgba(30, 30, 30, 0.8);
+        border-color: rgba(155, 70, 212, 0.4);
+      }
+
+      .activity-card.full {
+        grid-column: 1 / -1;
+      }
+
+      .act-type {
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(155, 70, 212, 0.8);
+        margin-bottom: 8px;
+      }
+
+      .act-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .act-desc {
+        font-size: 13px;
+        color: rgba(245, 245, 245, 0.7);
+        line-height: 1.6;
+      }
+
+      .back-bar {
+        padding: 24px 60px;
+        border-top: 1px solid rgba(245, 245, 245, 0.1);
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #9b46d4;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
         .hero {
-            padding: 60px 80px;
-            background: linear-gradient(135deg, rgba(155,70,212,0.08) 0%, rgba(155,70,212,0.03) 100%);
-            border-bottom: 1px solid rgba(155,70,212,0.20);
+          padding: 40px 20px;
         }
-        .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
-        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 12px; }
-        .hero-title em { font-style: italic; color: #cc88f5; }
-        .hero-desc { font-size: 15px; color: rgba(245,245,245,0.70); line-height: 1.6; }
-        
+        .hero-title {
+          font-size: 32px;
+        }
         .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
+          padding: 40px 16px;
         }
-        
-        .section { margin-bottom: 60px; }
-        .section-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
-        .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #fff; }
-        .section p { font-size: 15px; line-height: 1.7; color: rgba(245,245,245,0.75); margin-bottom: 16px; }
-        
-        .pdf-viewer-wrap {
-            background: rgba(30,30,30,0.6);
-            border: 1px solid rgba(155,70,212,0.20);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .pdf-toolbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(155,70,212,0.15);
-            background: rgba(20,20,20,0.6);
-        }
-        
-        .pdf-toolbar-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .pdf-icon { font-size: 20px; }
-        .pdf-filename { font-size: 13px; font-weight: 600; color: #fff; }
-        .pdf-filetype { display: inline-block; font-size: 10px; padding: 2px 8px; background: rgba(155,70,212,0.15); color: #cc88f5; border-radius: 4px; font-weight: 700; letter-spacing: 1px; }
-        
-        .pdf-toolbar-right {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .pdf-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            background: rgba(155,70,212,0.20);
-            color: #cc88f5;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: 1px solid rgba(155,70,212,0.30);
-        }
-        
-        .pdf-btn:hover {
-            background: rgba(155,70,212,0.30);
-            color: #fff;
-        }
-        
         .pdf-frame-container {
-            position: relative;
-            height: 500px;
-            background: rgba(10,10,10,0.5);
+          height: 400px;
         }
-        
-        .pdf-frame-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .pdf-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: rgba(155,70,212,0.06);
-            border: 2px dashed rgba(155,70,212,0.30);
-        }
-        
-        .pdf-placeholder-icon {
-            width: 48px;
-            height: 48px;
-            opacity: 0.3;
-        }
-        
-        .pdf-placeholder-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .pdf-placeholder-text {
-            font-size: 14px;
-            font-weight: 600;
-            color: rgba(155,70,212,0.60);
-        }
-        
-        .pdf-placeholder-sub {
-            font-size: 12px;
-            color: rgba(245,245,245,0.40);
-        }
-        
         .activity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
-        
-        .activity-card {
-            padding: 24px;
-            background: rgba(30,30,30,0.6);
-            border: 1px solid rgba(155,70,212,0.20);
-            border-radius: 12px;
-            transition: all 0.3s;
-        }
-        
-        .activity-card:hover {
-            background: rgba(30,30,30,0.8);
-            border-color: rgba(155,70,212,0.40);
-        }
-        
-        .activity-card.full {
-            grid-column: 1 / -1;
-        }
-        
-        .act-type {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: rgba(155,70,212,0.80);
-            margin-bottom: 8px;
-        }
-        
-        .act-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-        
-        .act-desc {
-            font-size: 13px;
-            color: rgba(245,245,245,0.70);
-            line-height: 1.6;
-        }
-        
-        .back-bar { padding: 24px 60px; border-top: 1px solid rgba(245,245,245,0.10); }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #9b46d4; text-decoration: none; font-weight: 600; font-size: 14px; }
-        .back-link:hover { text-decoration: underline; }
-        
-        @media (max-width: 768px) {
-            .hero { padding: 40px 20px; }
-            .hero-title { font-size: 32px; }
-            .content { padding: 40px 16px; }
-            .pdf-frame-container { height: 400px; }
-            .activity-grid { grid-template-columns: 1fr; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="../index.html" class="left-side"><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
-        <div class="center">
-            <a href="../index.html">About Us</a>
-            <a href="topics.html">Topics</a>
-            <a href="projects.html">Projects</a>
-            <a href="#tools">Tools</a>
-        </div>
-        <div class="right-side" id="navRight">
-            <!-- Dynamically populated by nav.js -->
-        </div>
+      <a href="../index.html" class="left-side"
+        ><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"
+      /></a>
+      <div class="center">
+        <a href="../index.html">About Us</a>
+        <a href="topics.html">Topics</a>
+        <a href="projects.html">Projects</a>
+        <a href="#tools">Tools</a>
+      </div>
+      <div class="right-side" id="navRight">
+        <!-- Dynamically populated by nav.js -->
+      </div>
     </nav>
 
     <div class="breadcrumb">
-        <a href="../index.html">Home</a>
-        <span class="sep">›</span>
-        <a href="topics.html">Topics</a>
-        <span class="sep">›</span>
-        <span class="current" id="breadcrumbTitle">Topic</span>
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="topics.html">Topics</a>
+      <span class="sep">›</span>
+      <span class="current" id="breadcrumbTitle">Topic</span>
     </div>
 
     <div class="hero">
-        <span class="hero-tag" id="heroTag">Topic Tag</span>
-        <div class="hero-body">
-            <div class="hero-title">
-                <span id="heroTitle">Topic</span> <em id="heroTitleEm">Name</em>
-            </div>
-            <p class="hero-desc" id="heroDesc">Topic description goes here.</p>
+      <span class="hero-tag" id="heroTag">Topic Tag</span>
+      <div class="hero-body">
+        <div class="hero-title">
+          <span id="heroTitle">Topic</span> <em id="heroTitleEm">Name</em>
         </div>
+        <p class="hero-desc" id="heroDesc">Topic description goes here.</p>
+      </div>
     </div>
 
     <div class="content">
-        <!-- 1. OVERVIEW -->
-        <div class="section">
-            <div class="section-eyebrow">Overview</div>
-            <h2 id="overviewTitle">What is this topic?</h2>
-            <div id="overviewContent">
-                <p>Loading topic details...</p>
-            </div>
+      <!-- 1. OVERVIEW -->
+      <div class="section">
+        <div class="section-eyebrow">Overview</div>
+        <h2 id="overviewTitle">What is this topic?</h2>
+        <div id="overviewContent">
+          <p>Loading topic details...</p>
         </div>
+      </div>
 
-        <!-- 2. LESSONS — PDF VIEWER -->
-        <div class="section">
-            <div class="section-eyebrow">Lessons</div>
-            <h2>Course Materials</h2>
+      <!-- 2. LESSONS — PDF VIEWER -->
+      <div class="section">
+        <div class="section-eyebrow">Lessons</div>
+        <h2>Course Materials</h2>
 
-            <div class="pdf-viewer-wrap">
-                <div class="pdf-toolbar">
-                    <div class="pdf-toolbar-left">
-                        <div class="pdf-icon">📄</div>
-                        <span class="pdf-filename" id="pdfFilename">No file linked yet</span>
-                        <span class="pdf-filetype" id="pdfFileType" style="display:none;">PDF</span>
-                    </div>
-                    <div class="pdf-toolbar-right" id="pdfToolbarRight" style="display:none;">
-                        <a id="pdfDownloadBtn" href="#" download class="pdf-btn">⬇ Download</a>
-                        <a id="pdfOpenBtn" href="#" target="_blank" class="pdf-btn">↗ Open</a>
-                    </div>
-                </div>
-
-                <div class="pdf-frame-container">
-                    <iframe
-                        id="pdfIframe"
-                        title="Topic Course Materials"
-                        loading="lazy"
-                        style="display:none;"
-                        onerror="document.getElementById('pdfPlaceholder').style.display='flex';"
-                    ></iframe>
-                    <div class="pdf-placeholder" id="pdfPlaceholder">
-                        <div class="pdf-placeholder-icon">
-                            <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="62" height="78" rx="5" stroke="rgba(155,70,212,0.4)" stroke-width="2" fill="rgba(155,70,212,0.06)"/>
-                                <path d="M14 24h36M14 34h36M14 44h24" stroke="rgba(245,245,245,0.15)" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M38 54l8 8m0-8l-8 8" stroke="rgba(155,70,212,0.5)" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div>
-                        <span class="pdf-placeholder-text">No file linked yet</span>
-                        <span class="pdf-placeholder-sub">Set the pdf_filename for this topic in the Admin Dashboard</span>
-                    </div>
-                </div>
+        <div class="pdf-viewer-wrap">
+          <div class="pdf-toolbar">
+            <div class="pdf-toolbar-left">
+              <div class="pdf-icon">📄</div>
+              <span class="pdf-filename" id="pdfFilename"
+                >No file linked yet</span
+              >
+              <span class="pdf-filetype" id="pdfFileType" style="display: none"
+                >PDF</span
+              >
             </div>
-        </div>
-
-        <!-- 3. SUGGESTED ACTIVITIES -->
-        <div class="section" id="activitiesSection" style="display:none;">
-            <div class="section-eyebrow">Suggested Exercise / Activity / Experiment</div>
-            <h2>Apply What You've Learned</h2>
-            <div class="activity-grid" id="activitiesContainer">
+            <div
+              class="pdf-toolbar-right"
+              id="pdfToolbarRight"
+              style="display: none"
+            >
+              <a id="pdfDownloadBtn" href="#" download class="pdf-btn"
+                >⬇ Download</a
+              >
+              <a id="pdfOpenBtn" href="#" target="_blank" class="pdf-btn"
+                >↗ Open</a
+              >
             </div>
+          </div>
+
+          <div class="pdf-frame-container">
+            <iframe
+              id="pdfIframe"
+              title="Topic Course Materials"
+              loading="lazy"
+              style="display: none"
+              onerror="
+                document.getElementById('pdfPlaceholder').style.display = 'flex'
+              "
+            ></iframe>
+            <div class="pdf-placeholder" id="pdfPlaceholder">
+              <div class="pdf-placeholder-icon">
+                <svg
+                  viewBox="0 0 64 80"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="1"
+                    y="1"
+                    width="62"
+                    height="78"
+                    rx="5"
+                    stroke="rgba(155,70,212,0.4)"
+                    stroke-width="2"
+                    fill="rgba(155,70,212,0.06)"
+                  />
+                  <path
+                    d="M14 24h36M14 34h36M14 44h24"
+                    stroke="rgba(245,245,245,0.15)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M38 54l8 8m0-8l-8 8"
+                    stroke="rgba(155,70,212,0.5)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <span class="pdf-placeholder-text">No file linked yet</span>
+              <span class="pdf-placeholder-sub"
+                >Set the pdf_filename for this topic in the Admin
+                Dashboard</span
+              >
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- 3. SUGGESTED ACTIVITIES -->
+      <div class="section" id="activitiesSection" style="display: none">
+        <div class="section-eyebrow">
+          Suggested Exercise / Activity / Experiment
+        </div>
+        <h2>Apply What You've Learned</h2>
+        <div class="activity-grid" id="activitiesContainer"></div>
+      </div>
     </div>
 
     <div class="back-bar">
-        <a href="topics.html" class="back-link">← Back to Topics</a>
+      <a href="topics.html" class="back-link">← Back to Topics</a>
     </div>
 
     <footer class="footer">
-        <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
-        <div class="links">
-            <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
-        </div>
+      <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+      <div class="links">
+        <a href="https://www.facebook.com/BICpES" target="_blank"
+          ><strong>Facebook</strong></a
+        >
+      </div>
     </footer>
 
     <script src="../js/auth.js"></script>
     <script src="../js/nav.js"></script>
     <script src="../js/db.js"></script>
     <script>
-        // Get topic ID from URL
-        const params = new URLSearchParams(window.location.search);
-        const topicId = parseInt(params.get('id')) || 0;
+      // Get topic ID from URL
+      const params = new URLSearchParams(window.location.search);
+      const topicId = parseInt(params.get("id")) || 0;
 
-        if (topicId === 0) {
-            window.location.href = 'topics.html';
+      if (topicId === 0) {
+        window.location.href = "topics.html";
+      }
+
+      async function loadTopic() {
+        if (!isLoggedIn()) {
+          window.location.href = "../index.html#login";
+          return;
         }
 
-        async function loadTopic() {
-            if (!isLoggedIn()) {
-                window.location.href = '../index.html#login';
-                return;
-            }
+        try {
+          const response = await fetch(`/api/topics?id=${topicId}`);
+          const data = await response.json();
 
-            try {
-                const response = await fetch(`/api/topics?id=${topicId}`);
-                const data = await response.json();
-                
-                if (!data.data || data.data.length === 0) {
-                    window.location.href = 'topics.html';
-                    return;
-                }
+          if (!data.data || data.data.length === 0) {
+            window.location.href = "topics.html";
+            return;
+          }
 
-                const topic = data.data[0];
-                displayTopic(topic);
-            } catch (error) {
-                console.error('Error loading topic:', error);
-                document.getElementById('overviewContent').innerHTML = '<p>Error loading topic details.</p>';
-            }
+          const topic = data.data[0];
+          displayTopic(topic);
+        } catch (error) {
+          console.error("Error loading topic:", error);
+          document.getElementById("overviewContent").innerHTML =
+            "<p>Error loading topic details.</p>";
+        }
+      }
+
+      function displayTopic(topic) {
+        const topicNum = String(topic.topic_num).padStart(2, "0");
+
+        // Update breadcrumb and hero
+        document.getElementById("breadcrumbTitle").textContent = topic.name;
+        document.getElementById("heroTag").textContent =
+          `Topic ${topicNum} · ${topic.category}`;
+
+        const words = topic.name.split(" ");
+        const lastWord = words.pop();
+        const restWords = words.join(" ");
+
+        document.getElementById("heroTitle").textContent = restWords;
+        document.getElementById("heroTitleEm").textContent = lastWord;
+        document.getElementById("heroDesc").textContent = topic.description;
+        document.getElementById("overviewTitle").textContent =
+          `What is ${topic.name}?`;
+
+        // Overview
+        const overview = topic.overview_body || topic.description;
+        const paragraphs = overview
+          .split("|")
+          .map((p) => p.trim())
+          .filter((p) => p !== "");
+        const overviewHtml = paragraphs.map((p) => `<p>${p}</p>`).join("");
+        document.getElementById("overviewContent").innerHTML =
+          overviewHtml || `<p>${topic.description}</p>`;
+
+        // PDF
+        if (topic.pdf_filename) {
+          const pdfPath = `../Materials/${topic.pdf_filename}`;
+          document.getElementById("pdfFilename").textContent =
+            topic.pdf_filename;
+          document.getElementById("pdfFileType").style.display = "inline-block";
+          document.getElementById("pdfToolbarRight").style.display = "flex";
+          document.getElementById("pdfIframe").src = pdfPath;
+          document.getElementById("pdfIframe").style.display = "block";
+          document.getElementById("pdfPlaceholder").style.display = "none";
+          document.getElementById("pdfDownloadBtn").href = pdfPath;
+          document.getElementById("pdfOpenBtn").href = pdfPath;
         }
 
-        function displayTopic(topic) {
-            const topicNum = String(topic.topic_num).padStart(2, '0');
-            
-            // Update breadcrumb and hero
-            document.getElementById('breadcrumbTitle').textContent = topic.name;
-            document.getElementById('heroTag').textContent = `Topic ${topicNum} · ${topic.category}`;
-            
-            const words = topic.name.split(' ');
-            const lastWord = words.pop();
-            const restWords = words.join(' ');
-            
-            document.getElementById('heroTitle').textContent = restWords;
-            document.getElementById('heroTitleEm').textContent = lastWord;
-            document.getElementById('heroDesc').textContent = topic.description;
-            document.getElementById('overviewTitle').textContent = `What is ${topic.name}?`;
-
-            // Overview
-            const overview = topic.overview_body || topic.description;
-            const paragraphs = overview.split('|').map(p => p.trim()).filter(p => p !== '');
-            const overviewHtml = paragraphs.map(p => `<p>${p}</p>`).join('');
-            document.getElementById('overviewContent').innerHTML = overviewHtml || `<p>${topic.description}</p>`;
-
-            // PDF
-            if (topic.pdf_filename) {
-                const pdfPath = `../Materials/${topic.pdf_filename}`;
-                document.getElementById('pdfFilename').textContent = topic.pdf_filename;
-                document.getElementById('pdfFileType').style.display = 'inline-block';
-                document.getElementById('pdfToolbarRight').style.display = 'flex';
-                document.getElementById('pdfIframe').src = pdfPath;
-                document.getElementById('pdfIframe').style.display = 'block';
-                document.getElementById('pdfPlaceholder').style.display = 'none';
-                document.getElementById('pdfDownloadBtn').href = pdfPath;
-                document.getElementById('pdfOpenBtn').href = pdfPath;
-            }
-
-            // Activities
-            if (topic.activities_json) {
-                try {
-                    const activities = JSON.parse(topic.activities_json);
-                    if (Array.isArray(activities) && activities.length > 0) {
-                        document.getElementById('activitiesSection').style.display = 'block';
-                        const isOdd = activities.length % 2 !== 0;
-                        const activitiesHtml = activities.map((act, idx) => {
-                            const isFull = isOdd && idx === activities.length - 1;
-                            return `
-                                <div class="activity-card${isFull ? ' full' : ''}">
-                                    <div class="act-type">${act.type || 'Activity'}</div>
-                                    <div class="act-title">${act.title || ''}</div>
-                                    <div class="act-desc">${act.description || ''}</div>
+        // Activities
+        if (topic.activities_json) {
+          try {
+            const activities = JSON.parse(topic.activities_json);
+            if (Array.isArray(activities) && activities.length > 0) {
+              document.getElementById("activitiesSection").style.display =
+                "block";
+              const isOdd = activities.length % 2 !== 0;
+              const activitiesHtml = activities
+                .map((act, idx) => {
+                  const isFull = isOdd && idx === activities.length - 1;
+                  return `
+                                <div class="activity-card${isFull ? " full" : ""}">
+                                    <div class="act-type">${act.type || "Activity"}</div>
+                                    <div class="act-title">${act.title || ""}</div>
+                                    <div class="act-desc">${act.description || ""}</div>
                                 </div>
                             `;
-                        }).join('');
-                        document.getElementById('activitiesContainer').innerHTML = activitiesHtml;
-                    }
-                } catch (e) {
-                    console.error('Error parsing activities:', e);
-                }
+                })
+                .join("");
+              document.getElementById("activitiesContainer").innerHTML =
+                activitiesHtml;
             }
+          } catch (e) {
+            console.error("Error parsing activities:", e);
+          }
         }
+      }
 
-        // Load on page load
-        document.addEventListener('DOMContentLoaded', loadTopic);
+      // Load on page load
+      document.addEventListener("DOMContentLoaded", loadTopic);
     </script>
-</body>
+  </body>
 </html>

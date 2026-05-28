@@ -65,11 +65,11 @@ vercel --prod
 3. Go to **Settings** → **Environment Variables**
 4. Add these variables:
 
-| Variable | Value | Example |
-|----------|-------|---------|
-| `VITE_SUPABASE_URL` | From Step 1 | `https://xxxxx.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | From Step 1 | `eyJhbGc...` |
-| `VITE_API_URL` | Your Vercel domain | `https://bicpes.vercel.app/api` |
+| Variable                 | Value              | Example                         |
+| ------------------------ | ------------------ | ------------------------------- |
+| `VITE_SUPABASE_URL`      | From Step 1        | `https://xxxxx.supabase.co`     |
+| `VITE_SUPABASE_ANON_KEY` | From Step 1        | `eyJhbGc...`                    |
+| `VITE_API_URL`           | Your Vercel domain | `https://bicpes.vercel.app/api` |
 
 5. Click **Save**
 6. Vercel will **automatically redeploy** with new env vars
@@ -79,27 +79,34 @@ vercel --prod
 ## STEP 5: Test Your Deployment (3 minutes)
 
 ### Test Homepage
+
 ```
 https://your-vercel-domain.vercel.app/
 ```
+
 Should show: BICpES Learning Hub with hero section and preview cards
 
 ### Test Projects
+
 ```
 https://your-vercel-domain.vercel.app/pages/projects.html
 ```
+
 Should show: Projects list loading from Supabase
 
 ### Test API
+
 ```
 In browser console (F12):
 fetch('https://your-vercel-domain.vercel.app/api/projects')
   .then(r => r.json())
   .then(data => console.log(data))
 ```
+
 Should show: JSON array of projects
 
 ### Test Login
+
 1. Click "Start Learning" on homepage
 2. Go to signup
 3. Create test account (student number: 2321000, password: test123)
@@ -112,26 +119,31 @@ Should show: JSON array of projects
 ## TROUBLESHOOTING
 
 ### ❌ "API not responding"
+
 - Check Vercel environment variables are set correctly
 - Check Supabase URL and key are valid
 - Check Supabase tables are created (run SQL schema again)
 
 ### ❌ "Database connection error"
+
 - Verify VITE_SUPABASE_URL is correct
 - Verify VITE_SUPABASE_ANON_KEY is correct
 - Check Supabase project is active (not paused)
 
 ### ❌ "Images not loading"
+
 - Images are bundled in dist/assets/ automatically
 - If missing, rebuild: `npm run build`
 - Check dist/ folder has assets
 
 ### ❌ "PDF materials not loading"
+
 - PDFs need to be in `/public/Materials/` folder
 - After pushing to git, they'll deploy with Vercel
 - Check /Materials/ folder exists in repo
 
 ### ❌ "Login keeps redirecting to signup"
+
 - Check database has sample data from 001_init.sql
 - Try with admin: student_number=`ADMIN`, password=`admin123`
 - Check browser console (F12) for errors
@@ -153,6 +165,7 @@ Should show all ✅ checks passing.
 ## LIVE SITE URLS
 
 Once deployed, your site will be at:
+
 ```
 https://bicpes.vercel.app/                    (Homepage)
 https://bicpes.vercel.app/pages/projects.html  (Projects)
@@ -166,19 +179,23 @@ https://bicpes.vercel.app/pages/topic.html?id=1    (Topic detail)
 ## NEXT STEPS (Optional)
 
 ### Custom Domain
+
 1. Vercel → Project → Settings → Domains
 2. Add your custom domain
 3. Update DNS records (Vercel shows instructions)
 
 ### Enable Google Analytics
+
 1. Vercel → Project → Settings → Analytics
 2. Connect Google Analytics account
 
 ### Monitor Performance
+
 - Vercel Dashboard → Analytics
 - Supabase Dashboard → Database → Queries
 
 ### Backup Database
+
 - Supabase → Backups → Enable Auto-backup
 
 ---

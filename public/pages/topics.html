@@ -1,61 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/design.css">
-    <link rel="stylesheet" href="../styles/topics_design.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/design.css" />
+    <link rel="stylesheet" href="../styles/topics_design.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <title>BICpES Learning Hub — Topics</title>
     <style>
-        html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="../index.html" class="left-side"><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
-        <div class="center">
-            <a href="../index.html"><span><strong>BICpES</strong></span> Learning Hub</a>
-        </div>
-        <div class="right-side" id="navRight">
-            <!-- Populated by nav.js -->
-        </div>
+      <a href="../index.html" class="left-side"
+        ><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"
+      /></a>
+      <div class="center">
+        <a href="../index.html"
+          ><span><strong>BICpES</strong></span> Learning Hub</a
+        >
+      </div>
+      <div class="right-side" id="navRight">
+        <!-- Populated by nav.js -->
+      </div>
     </nav>
 
     <div class="hero">
-        <div class="hero-title">To<span>pics</span></div>
-        <div class="hero-right">
-            <p class="hero-sub">Everything you need for your CPE journey — from basic circuits to embedded systems.</p>
-        </div>
+      <div class="hero-title">To<span>pics</span></div>
+      <div class="hero-right">
+        <p class="hero-sub">
+          Everything you need for your CPE journey — from basic circuits to
+          embedded systems.
+        </p>
+      </div>
     </div>
 
     <div class="search-row">
-        <input class="topic-search" type="text" placeholder="Search topics..." id="topicSearch">
+      <input
+        class="topic-search"
+        type="text"
+        placeholder="Search topics..."
+        id="topicSearch"
+      />
     </div>
 
     <!-- DISCIPLINE CARDS -->
     <div class="discipline-strip">
-        <div class="discipline-label">Core Disciplines</div>
-        <div class="discipline-cards" id="disciplineCards">
-            <!-- Populated by JavaScript -->
-        </div>
+      <div class="discipline-label">Core Disciplines</div>
+      <div class="discipline-cards" id="disciplineCards">
+        <!-- Populated by JavaScript -->
+      </div>
     </div>
 
     <!-- TOPICS LIST -->
     <div class="topics-list" id="topicList">
-        <!-- Populated by JavaScript -->
+      <!-- Populated by JavaScript -->
     </div>
 
     <footer class="footer">
-        <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
-        <div class="links">
-            <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
-        </div>
+      <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+      <div class="links">
+        <a href="https://www.facebook.com/BICpES" target="_blank"
+          ><strong>Facebook</strong></a
+        >
+      </div>
     </footer>
 
     <script src="../js/auth.js"></script>
     <script src="../js/nav.js"></script>
     <script src="../js/pages/topics.js"></script>
-</body>
+  </body>
 </html>

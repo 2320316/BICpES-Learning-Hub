@@ -1,280 +1,517 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BICpES — MULTISIM</title>
-    <link rel="stylesheet" type="text/css" href="../styles/design.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/design.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        html { scroll-behavior: smooth; }
-        
-        .breadcrumb {
-            padding: 24px 60px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            font-size: 14px;
-            background: rgba(30,30,30,0.5);
-            border-bottom: 1px solid rgba(245,245,245,0.10);
-        }
-        .breadcrumb a { color: #9b46d4; text-decoration: none; }
-        .breadcrumb .sep { color: rgba(245,245,245,0.40); }
-        .breadcrumb .current { color: rgba(245,245,245,0.70); }
-        
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .breadcrumb {
+        padding: 24px 60px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 14px;
+        background: rgba(30, 30, 30, 0.5);
+        border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+      }
+      .breadcrumb a {
+        color: #9b46d4;
+        text-decoration: none;
+      }
+      .breadcrumb .sep {
+        color: rgba(245, 245, 245, 0.4);
+      }
+      .breadcrumb .current {
+        color: rgba(245, 245, 245, 0.7);
+      }
+
+      .hero {
+        padding: 60px 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-tag {
+        display: inline-block;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(155, 70, 212, 0.8);
+        margin-bottom: 12px;
+      }
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.1;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: #cc88f5;
+      }
+      .hero-brief {
+        font-size: 15px;
+        color: rgba(245, 245, 245, 0.7);
+        line-height: 1.6;
+      }
+
+      .content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .section {
+        margin-bottom: 60px;
+      }
+      .section-eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(155, 70, 212, 0.8);
+        margin-bottom: 12px;
+      }
+      .section h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+      .section p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: rgba(245, 245, 245, 0.75);
+        margin-bottom: 16px;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+      }
+      .step-circle {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #9b46d4, #cc88f5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .step-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .step-desc {
+        font-size: 14px;
+        color: rgba(245, 245, 245, 0.7);
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .inline-code {
+        background: rgba(155, 70, 212, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        color: #cc88f5;
+        font-size: 13px;
+      }
+      .step-note {
+        padding: 12px 14px;
+        background: rgba(155, 70, 212, 0.08);
+        border: 1px solid rgba(155, 70, 212, 0.2);
+        border-radius: 8px;
+      }
+      .step-note p {
+        margin: 0;
+        font-size: 13px;
+        color: rgba(155, 70, 212, 0.8);
+      }
+
+      .link-cards {
+        display: grid;
+        gap: 16px;
+      }
+      .link-card {
+        display: grid;
+        grid-template-columns: 40px 1fr 24px;
+        gap: 16px;
+        align-items: center;
+        padding: 20px;
+        background: rgba(30, 30, 30, 0.6);
+        border: 1px solid rgba(155, 70, 212, 0.2);
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+      .link-card:hover {
+        background: rgba(30, 30, 30, 0.8);
+        border-color: rgba(155, 70, 212, 0.4);
+        transform: translateX(4px);
+      }
+      .link-card-icon {
+        font-size: 24px;
+        text-align: center;
+      }
+      .link-card-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .link-card-sub {
+        font-size: 12px;
+        color: rgba(245, 245, 245, 0.6);
+      }
+      .link-card-arrow {
+        font-size: 18px;
+        color: rgba(155, 70, 212, 0.6);
+      }
+
+      .tutorial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+      .tutorial-card {
+        background: rgba(30, 30, 30, 0.6);
+        border: 1px solid rgba(155, 70, 212, 0.2);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+      }
+      .tutorial-card:hover {
+        background: rgba(30, 30, 30, 0.8);
+        border-color: rgba(155, 70, 212, 0.4);
+        transform: translateY(-4px);
+      }
+      .tut-thumb {
+        height: 120px;
+        background: linear-gradient(
+          135deg,
+          rgba(155, 70, 212, 0.2),
+          rgba(155, 70, 212, 0.1)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .play-btn {
+        font-size: 28px;
+      }
+      .tut-body {
+        padding: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .tut-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+      }
+      .tut-meta {
+        font-size: 11px;
+        color: rgba(155, 70, 212, 0.8);
+      }
+      .tut-more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+      }
+      .tut-more-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .tut-more-icon {
+        font-size: 20px;
+      }
+
+      .back-bar {
+        padding: 24px 60px;
+        border-top: 1px solid rgba(245, 245, 245, 0.1);
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #9b46d4;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
         .hero {
-            padding: 60px 80px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+          grid-template-columns: 1fr;
+          padding: 40px 20px;
         }
-        .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
-        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; }
-        .hero-title em { font-style: italic; color: #cc88f5; }
-        .hero-brief { font-size: 15px; color: rgba(245,245,245,0.70); line-height: 1.6; }
-        
+        .hero-title {
+          font-size: 32px;
+        }
         .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
+          padding: 40px 16px;
         }
-        
-        .section { margin-bottom: 60px; }
-        .section-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
-        .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #fff; }
-        .section p { font-size: 15px; line-height: 1.7; color: rgba(245,245,245,0.75); margin-bottom: 16px; }
-        
-        .steps { display: flex; flex-direction: column; gap: 24px; }
-        .step { display: grid; grid-template-columns: 60px 1fr; gap: 20px; }
-        .step-circle { width: 60px; height: 60px; background: linear-gradient(135deg, #9b46d4, #cc88f5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: #fff; flex-shrink: 0; }
-        .step-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-        .step-desc { font-size: 14px; color: rgba(245,245,245,0.70); line-height: 1.6; margin-bottom: 12px; }
-        .inline-code { background: rgba(155,70,212,0.10); padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; color: #cc88f5; font-size: 13px; }
-        .step-note { padding: 12px 14px; background: rgba(155,70,212,0.08); border: 1px solid rgba(155,70,212,0.20); border-radius: 8px; }
-        .step-note p { margin: 0; font-size: 13px; color: rgba(155,70,212,0.80); }
-        
-        .link-cards { display: grid; gap: 16px; }
         .link-card {
-            display: grid;
-            grid-template-columns: 40px 1fr 24px;
-            gap: 16px;
-            align-items: center;
-            padding: 20px;
-            background: rgba(30,30,30,0.6);
-            border: 1px solid rgba(155,70,212,0.20);
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s;
+          grid-template-columns: 1fr;
         }
-        .link-card:hover {
-            background: rgba(30,30,30,0.8);
-            border-color: rgba(155,70,212,0.40);
-            transform: translateX(4px);
+        .link-card-arrow {
+          justify-self: flex-end;
         }
-        .link-card-icon { font-size: 24px; text-align: center; }
-        .link-card-title { font-size: 14px; font-weight: 600; color: #fff; }
-        .link-card-sub { font-size: 12px; color: rgba(245,245,245,0.60); }
-        .link-card-arrow { font-size: 18px; color: rgba(155,70,212,0.60); }
-        
-        .tutorial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-        }
-        .tutorial-card {
-            background: rgba(30,30,30,0.6);
-            border: 1px solid rgba(155,70,212,0.20);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-        }
-        .tutorial-card:hover {
-            background: rgba(30,30,30,0.8);
-            border-color: rgba(155,70,212,0.40);
-            transform: translateY(-4px);
-        }
-        .tut-thumb { height: 120px; background: linear-gradient(135deg, rgba(155,70,212,0.20), rgba(155,70,212,0.10)); display: flex; align-items: center; justify-content: center; position: relative; }
-        .play-btn { font-size: 28px; }
-        .tut-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
-        .tut-title { font-size: 13px; font-weight: 600; color: #fff; }
-        .tut-meta { font-size: 11px; color: rgba(155,70,212,0.80); }
-        .tut-more { display: flex; align-items: center; justify-content: center; min-height: 180px; }
-        .tut-more-inner { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-        .tut-more-icon { font-size: 20px; }
-        
-        .back-bar { padding: 24px 60px; border-top: 1px solid rgba(245,245,245,0.10); }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #9b46d4; text-decoration: none; font-weight: 600; font-size: 14px; }
-        .back-link:hover { text-decoration: underline; }
-        
-        @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; padding: 40px 20px; }
-            .hero-title { font-size: 32px; }
-            .content { padding: 40px 16px; }
-            .link-card { grid-template-columns: 1fr; }
-            .link-card-arrow { justify-self: flex-end; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="../index.html" class="left-side"><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
-        <div class="center">
-            <a href="../index.html">About Us</a>
-            <a href="topics.html">Topics</a>
-            <a href="projects.html">Projects</a>
-            <a href="#tools">Tools</a>
-        </div>
-        <div class="right-side" id="navRight">
-            <!-- Dynamically populated by nav.js -->
-        </div>
+      <a href="../index.html" class="left-side"
+        ><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"
+      /></a>
+      <div class="center">
+        <a href="../index.html">About Us</a>
+        <a href="topics.html">Topics</a>
+        <a href="projects.html">Projects</a>
+        <a href="#tools">Tools</a>
+      </div>
+      <div class="right-side" id="navRight">
+        <!-- Dynamically populated by nav.js -->
+      </div>
     </nav>
 
     <div class="breadcrumb">
-        <a href="../index.html">Home</a>
-        <span class="sep">›</span>
-        <span class="current">Multisim</span>
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Multisim</span>
     </div>
 
     <div class="hero">
-        <div class="hero-left">
-            <span class="hero-tag">Software &amp; Simulation</span>
-            <div class="hero-title">Simulation <em>Tools</em></div>
-        </div>
-        <div class="hero-right">
-            <p class="hero-brief">Industry-standard tools used by CPE students for circuit simulation, PCB design, and 3D electronics prototyping.</p>
-        </div>
+      <div class="hero-left">
+        <span class="hero-tag">Software &amp; Simulation</span>
+        <div class="hero-title">Simulation <em>Tools</em></div>
+      </div>
+      <div class="hero-right">
+        <p class="hero-brief">
+          Industry-standard tools used by CPE students for circuit simulation,
+          PCB design, and 3D electronics prototyping.
+        </p>
+      </div>
     </div>
 
     <div class="content">
-        <!-- OVERVIEW -->
-        <div class="section">
-            <div class="section-eyebrow">Overview</div>
-            <h2>What is Multisim?</h2>
-            <p>NI Multisim is an industry-standard SPICE-based circuit simulation environment designed for education and professional use. It allows you to design, simulate, and analyze electronic circuits without needing physical components — saving time and reducing the risk of damaging hardware during prototyping.</p>
-            <p>In BICpES, Multisim is used across subjects such as Circuit Analysis, Electronics 1 &amp; 2, and Embedded Systems to verify designs, run virtual experiments, and generate waveform data for reports.</p>
-        </div>
+      <!-- OVERVIEW -->
+      <div class="section">
+        <div class="section-eyebrow">Overview</div>
+        <h2>What is Multisim?</h2>
+        <p>
+          NI Multisim is an industry-standard SPICE-based circuit simulation
+          environment designed for education and professional use. It allows you
+          to design, simulate, and analyze electronic circuits without needing
+          physical components — saving time and reducing the risk of damaging
+          hardware during prototyping.
+        </p>
+        <p>
+          In BICpES, Multisim is used across subjects such as Circuit Analysis,
+          Electronics 1 &amp; 2, and Embedded Systems to verify designs, run
+          virtual experiments, and generate waveform data for reports.
+        </p>
+      </div>
 
-        <!-- STEPS TO DOWNLOAD -->
-        <div class="section">
-            <div class="section-eyebrow">Steps to Download</div>
-            <h2>Installation Guide</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-circle">1</div>
-                    <div class="step-body">
-                        <div class="step-title">Visit the NI Website</div>
-                        <div class="step-desc">Go to <span class="inline-code">ni.com/multisim</span> or use the direct download link provided below. Make sure you're connected to a stable internet connection as the installer is approximately 6–8 GB.</div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">2</div>
-                    <div class="step-body">
-                        <div class="step-title">Create or Log In to an NI Account</div>
-                        <div class="step-desc">Register for a free NI account using your school email address. Students may qualify for free academic licensing through the NI Academic Site License program — check with your instructor for the institution's license key.</div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">3</div>
-                    <div class="step-body">
-                        <div class="step-title">Download the Installer</div>
-                        <div class="step-desc">Select <strong>NI Multisim 14.x</strong> (latest stable version) and choose the Full version. Download the <span class="inline-code">.exe</span> installer to your PC. This may take 15–30 minutes depending on your connection speed.</div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">4</div>
-                    <div class="step-body">
-                        <div class="step-title">Run the Installer</div>
-                        <div class="step-desc">Right-click the installer and select <strong>Run as Administrator</strong>. Follow the setup wizard — accept the license agreement, select installation directory, and choose <em>NI Circuit Design Suite</em> which includes Multisim and Ultiboard. Click Install and wait for completion.</div>
-                        <div class="step-note"><p>⚠ Disable antivirus temporarily if the installer is blocked. Windows Defender may flag NI installers; this is a false positive.</p></div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-circle">5</div>
-                    <div class="step-body">
-                        <div class="step-title">Activate with License Key</div>
-                        <div class="step-desc">On first launch, Multisim will prompt for activation. Enter the serial number provided by your instructor or obtained through the NI Academic program. Alternatively, select <strong>Try for 30 days</strong> to begin immediately.</div>
-                    </div>
-                </div>
+      <!-- STEPS TO DOWNLOAD -->
+      <div class="section">
+        <div class="section-eyebrow">Steps to Download</div>
+        <h2>Installation Guide</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-circle">1</div>
+            <div class="step-body">
+              <div class="step-title">Visit the NI Website</div>
+              <div class="step-desc">
+                Go to <span class="inline-code">ni.com/multisim</span> or use
+                the direct download link provided below. Make sure you're
+                connected to a stable internet connection as the installer is
+                approximately 6–8 GB.
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- DOWNLOAD LINKS -->
-        <div class="section">
-            <div class="section-eyebrow">Download</div>
-            <h2>Official Download Links</h2>
-            <div class="link-cards">
-                <a href="https://www.ni.com/en/support/downloads/software-products/download.multisim.html" target="_blank" class="link-card">
-                    <div class="link-card-icon">↗</div>
-                    <div>
-                        <div class="link-card-title">NI Multisim — Official Download</div>
-                        <div class="link-card-sub">ni.com · Latest version with full component library</div>
-                    </div>
-                    <div class="link-card-arrow">›</div>
-                </a>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-body">
+              <div class="step-title">Create or Log In to an NI Account</div>
+              <div class="step-desc">
+                Register for a free NI account using your school email address.
+                Students may qualify for free academic licensing through the NI
+                Academic Site License program — check with your instructor for
+                the institution's license key.
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- TUTORIALS -->
-        <div class="section">
-            <div class="section-eyebrow">Tutorials</div>
-            <h2>Learning Resources</h2>
-            <div class="tutorial-grid">
-                <div class="tutorial-card">
-                    <div class="tut-thumb"><div class="play-btn">▶</div></div>
-                    <div class="tut-body">
-                        <div class="tut-title">Getting Started with Multisim</div>
-                        <div class="tut-meta">Official NI Tutorial · 18 min</div>
-                    </div>
-                </div>
-
-                <div class="tutorial-card">
-                    <div class="tut-thumb"><div class="play-btn">▶</div></div>
-                    <div class="tut-body">
-                        <div class="tut-title">Simulating a Basic DC Circuit</div>
-                        <div class="tut-meta">BICpES Tutorial · 12 min</div>
-                    </div>
-                </div>
-
-                <div class="tutorial-card">
-                    <div class="tut-thumb"><div class="play-btn">▶</div></div>
-                    <div class="tut-body">
-                        <div class="tut-title">Op-Amp Analysis &amp; Oscilloscope</div>
-                        <div class="tut-meta">BICpES Tutorial · 22 min</div>
-                    </div>
-                </div>
-
-                <a href="https://www.ni.com/en/support/documentation/supplemental/06/multisim-tutorials.html" target="_blank" class="tutorial-card tut-more">
-                    <div class="tut-more-inner">
-                        <span class="tut-more-icon">↗</span>
-                        <span>View All NI Tutorials</span>
-                    </div>
-                </a>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-body">
+              <div class="step-title">Download the Installer</div>
+              <div class="step-desc">
+                Select <strong>NI Multisim 14.x</strong> (latest stable version)
+                and choose the Full version. Download the
+                <span class="inline-code">.exe</span> installer to your PC. This
+                may take 15–30 minutes depending on your connection speed.
+              </div>
             </div>
+          </div>
+
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-body">
+              <div class="step-title">Run the Installer</div>
+              <div class="step-desc">
+                Right-click the installer and select
+                <strong>Run as Administrator</strong>. Follow the setup wizard —
+                accept the license agreement, select installation directory, and
+                choose <em>NI Circuit Design Suite</em> which includes Multisim
+                and Ultiboard. Click Install and wait for completion.
+              </div>
+              <div class="step-note">
+                <p>
+                  ⚠ Disable antivirus temporarily if the installer is blocked.
+                  Windows Defender may flag NI installers; this is a false
+                  positive.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-body">
+              <div class="step-title">Activate with License Key</div>
+              <div class="step-desc">
+                On first launch, Multisim will prompt for activation. Enter the
+                serial number provided by your instructor or obtained through
+                the NI Academic program. Alternatively, select
+                <strong>Try for 30 days</strong> to begin immediately.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- DOWNLOAD LINKS -->
+      <div class="section">
+        <div class="section-eyebrow">Download</div>
+        <h2>Official Download Links</h2>
+        <div class="link-cards">
+          <a
+            href="https://www.ni.com/en/support/downloads/software-products/download.multisim.html"
+            target="_blank"
+            class="link-card"
+          >
+            <div class="link-card-icon">↗</div>
+            <div>
+              <div class="link-card-title">NI Multisim — Official Download</div>
+              <div class="link-card-sub">
+                ni.com · Latest version with full component library
+              </div>
+            </div>
+            <div class="link-card-arrow">›</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- TUTORIALS -->
+      <div class="section">
+        <div class="section-eyebrow">Tutorials</div>
+        <h2>Learning Resources</h2>
+        <div class="tutorial-grid">
+          <div class="tutorial-card">
+            <div class="tut-thumb"><div class="play-btn">▶</div></div>
+            <div class="tut-body">
+              <div class="tut-title">Getting Started with Multisim</div>
+              <div class="tut-meta">Official NI Tutorial · 18 min</div>
+            </div>
+          </div>
+
+          <div class="tutorial-card">
+            <div class="tut-thumb"><div class="play-btn">▶</div></div>
+            <div class="tut-body">
+              <div class="tut-title">Simulating a Basic DC Circuit</div>
+              <div class="tut-meta">BICpES Tutorial · 12 min</div>
+            </div>
+          </div>
+
+          <div class="tutorial-card">
+            <div class="tut-thumb"><div class="play-btn">▶</div></div>
+            <div class="tut-body">
+              <div class="tut-title">Op-Amp Analysis &amp; Oscilloscope</div>
+              <div class="tut-meta">BICpES Tutorial · 22 min</div>
+            </div>
+          </div>
+
+          <a
+            href="https://www.ni.com/en/support/documentation/supplemental/06/multisim-tutorials.html"
+            target="_blank"
+            class="tutorial-card tut-more"
+          >
+            <div class="tut-more-inner">
+              <span class="tut-more-icon">↗</span>
+              <span>View All NI Tutorials</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="back-bar">
-        <a href="../index.html" class="back-link">← Back to Home</a>
+      <a href="../index.html" class="back-link">← Back to Home</a>
     </div>
 
     <footer class="footer">
-        <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
-        <div class="links">
-            <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
-        </div>
+      <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+      <div class="links">
+        <a href="https://www.facebook.com/BICpES" target="_blank"
+          ><strong>Facebook</strong></a
+        >
+      </div>
     </footer>
 
     <script src="../js/auth.js"></script>
     <script src="../js/nav.js"></script>
-</body>
+  </body>
 </html>

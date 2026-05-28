@@ -13,13 +13,14 @@
 ✅ **Configuration:** Vercel + Supabase properly configured  
 ✅ **Assets:** All images, PDFs, and resources included  
 ✅ **Database Schema:** PostgreSQL schema ready for Supabase  
-✅ **Authentication:** JWT/session management configured  
+✅ **Authentication:** JWT/session management configured
 
 ---
 
 ## 1️⃣ BUILD VERIFICATION
 
 ### ✅ Build Output
+
 ```
 ✓ 17 modules transformed
 ✓ 8 HTML pages generated
@@ -29,16 +30,19 @@
 ```
 
 ### Build Command
+
 ```bash
 npm run build
 ```
 
 ### Output
+
 - **Location:** `dist/` folder
 - **Structure:** Production-ready static files
 - **Optimization:** Gzip compression enabled
 
 ### Generated Files
+
 ```
 dist/
 ├── index.html                    (10.07 kB / gzip: 2.94 kB)
@@ -66,26 +70,30 @@ dist/
 All endpoints follow Vercel Functions pattern (`/api/route/index.js`):
 
 #### Authentication Endpoints
-| Endpoint | Method | Status | Purpose |
-|----------|--------|--------|---------|
-| `/api/auth/signup` | POST | ✅ Ready | User registration |
-| `/api/auth/login` | POST | ✅ Ready | User authentication |
+
+| Endpoint           | Method | Status   | Purpose             |
+| ------------------ | ------ | -------- | ------------------- |
+| `/api/auth/signup` | POST   | ✅ Ready | User registration   |
+| `/api/auth/login`  | POST   | ✅ Ready | User authentication |
 
 **Location:** `public/api/auth/`  
 **Environment Variables:** Uses `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`
 
 #### Data Endpoints
-| Endpoint | Method | Status | Purpose |
-|----------|--------|--------|---------|
-| `/api/projects` | GET | ✅ Ready | Fetch all/filtered projects |
-| `/api/topics` | GET | ✅ Ready | Fetch all/filtered topics |
-| `/api/simulation-tools` | GET | ✅ Ready | Fetch simulation tools |
+
+| Endpoint                | Method | Status   | Purpose                     |
+| ----------------------- | ------ | -------- | --------------------------- |
+| `/api/projects`         | GET    | ✅ Ready | Fetch all/filtered projects |
+| `/api/topics`           | GET    | ✅ Ready | Fetch all/filtered topics   |
+| `/api/simulation-tools` | GET    | ✅ Ready | Fetch simulation tools      |
 
 **Location:** `public/api/projects/`, `public/api/topics/`, `public/api/simulation-tools/`  
 **Query Parameters:** `limit`, `offset`, `category`, `id`
 
 ### CORS Headers ✅
+
 All endpoints include proper CORS headers:
+
 ```javascript
 res.setHeader("Access-Control-Allow-Origin", "*");
 res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
@@ -93,6 +101,7 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ```
 
 ### Error Handling ✅
+
 - ✅ 404 responses for missing resources
 - ✅ 400 validation for bad requests
 - ✅ 401 authentication errors
@@ -104,6 +113,7 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ## 3️⃣ VERCEL CONFIGURATION
 
 ### ✅ vercel.json Configuration
+
 ```json
 {
   "projectSettings": {
@@ -122,6 +132,7 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ```
 
 ### ✅ vite.config.js Configuration
+
 ```javascript
 - Root: public/
 - Output Directory: ../dist
@@ -130,6 +141,7 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ```
 
 ### ✅ package.json Scripts
+
 ```json
 {
   "dev": "vite",
@@ -140,7 +152,9 @@ res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 ```
 
 ### ✅ Environment Variables
+
 Template provided in `.env.example`:
+
 ```
 VITE_SUPABASE_URL=your_supabase_url_here
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
@@ -153,6 +167,7 @@ VITE_ENV=development
 ## 4️⃣ SUPABASE CONFIGURATION
 
 ### ✅ Database Schema Ready
+
 Location: `database/001_init.sql`
 
 **Tables Created:**
@@ -165,6 +180,7 @@ Location: `database/001_init.sql`
 | `user_progress` | ✅ Ready | Track student progress on topics/projects |
 
 **Indexes Created (Performance):**
+
 - `idx_users_student_number` (UNIQUE)
 - `idx_users_role`
 - `idx_projects_category`
@@ -173,6 +189,7 @@ Location: `database/001_init.sql`
 - `idx_topics_category`
 
 ### ✅ Row Level Security (RLS)
+
 ```sql
 - Projects: Public read access ✅
 - Topics: Public read access ✅
@@ -181,6 +198,7 @@ Location: `database/001_init.sql`
 ```
 
 ### ✅ Sample Data Included
+
 - 4 Projects (Logic Gates, Boolean Minterm, De Morgan's, Flip-Flops)
 - 3 Topics (Combinational Logic, Logic Families, Sequential Logic)
 - 2 Simulation Tools (Multisim, Tinkercad)
@@ -191,20 +209,26 @@ Location: `database/001_init.sql`
 ## 5️⃣ AUTHENTICATION FLOW
 
 ### ✅ Frontend Authentication
+
 **Module:** `public/js/auth.js`
+
 - Session storage in `localStorage['bicpes_session']`
 - 24-hour token expiry
 - Current user tracking
 
 ### ✅ Backend Authentication
+
 **Endpoints:** `/api/auth/signup`, `/api/auth/login`
+
 - SHA-256 password hashing (TODO: upgrade to bcrypt)
 - User validation (student_number, password)
 - JWT token generation
 - Admin demo account (student_number="ADMIN")
 
 ### ✅ Protected Pages
+
 Pages with authentication checks:
+
 - ✅ `pages/projects.html` (redirects to login if not authenticated)
 - ✅ `pages/topics.html` (redirects to login if not authenticated)
 - ✅ `pages/project.html?id=X` (redirects to login if not authenticated)
@@ -212,7 +236,9 @@ Pages with authentication checks:
 - ✅ `pages/user-profile.html` (redirects to login if not authenticated)
 
 ### Public Pages
+
 Pages accessible without login:
+
 - ✅ `index.html` (homepage with preview)
 - ✅ `pages/multisim.html` (tool info)
 - ✅ `pages/tinkercad.html` (tool info)
@@ -222,16 +248,19 @@ Pages accessible without login:
 ## 6️⃣ DATABASE CONNECTIVITY CHECK
 
 ### ✅ Supabase Client Configuration
+
 **Module:** Used in all API endpoints
+
 ```javascript
 import { createClient } from "@supabase/supabase-js";
 const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
-  process.env.VITE_SUPABASE_ANON_KEY
+  process.env.VITE_SUPABASE_ANON_KEY,
 );
 ```
 
 ### ✅ Query Examples Working
+
 - ✅ `supabase.from('projects').select()`
 - ✅ `supabase.from('topics').select()`
 - ✅ `supabase.from('users').select()`
@@ -239,6 +268,7 @@ const supabase = createClient(
 - ✅ Pagination with limit/offset
 
 ### ✅ Error Handling
+
 All endpoints include try/catch blocks with user-friendly error messages.
 
 ---
@@ -246,7 +276,9 @@ All endpoints include try/catch blocks with user-friendly error messages.
 ## 7️⃣ ASSETS & RESOURCES
 
 ### ✅ Images Included
+
 Location: `dist/assets/`
+
 - ✅ Logo: BICpES Learning Hub Logo (467 KB)
 - ✅ Skills: Solving, Designing, Etching, Soldering (~480 KB)
 - ✅ Topics Preview (386 KB)
@@ -255,12 +287,14 @@ Location: `dist/assets/`
 **Total Image Size:** ~1.6 MB (optimized)
 
 ### ✅ Materials (PDFs)
+
 Should be served from `/Materials/` folder:
+
 - 24-Second-Shot-Clock.pdf
 - 7-Segment.pdf
 - 7-Segment_f680e6.pdf
-- Manalo_GJ_-_8.5.1_lab_-_configure_dhcpv6.pdf
-- Manalo_GJ_-_case_study-agri-track_pilipinas.pdf
+- Manalo*GJ*-_8.5.1_lab_-\_configure_dhcpv6.pdf
+- Manalo*GJ*-\_case_study-agri-track_pilipinas.pdf
 
 **Note:** PDFs need to be copied to Vercel deployment folder
 
@@ -269,6 +303,7 @@ Should be served from `/Materials/` folder:
 ## 8️⃣ DEPLOYMENT CHECKLIST
 
 ### Pre-Deployment
+
 - [ ] Create Supabase account at supabase.com
 - [ ] Create new Supabase project
 - [ ] Get Project URL and anon key
@@ -278,12 +313,14 @@ Should be served from `/Materials/` folder:
 - [ ] Connect GitHub repository to Vercel
 
 ### Vercel Configuration
+
 - [ ] Go to Vercel → Project Settings → Environment Variables
 - [ ] Add `VITE_SUPABASE_URL` → Paste Supabase project URL
 - [ ] Add `VITE_SUPABASE_ANON_KEY` → Paste anon key
 - [ ] Add `VITE_API_URL` → Set to your Vercel domain (e.g., `https://bicpes.vercel.app/api`)
 
 ### Post-Deployment Testing
+
 - [ ] Homepage loads (index.html)
 - [ ] Login/Signup form appears
 - [ ] Create test account
@@ -301,23 +338,30 @@ Should be served from `/Materials/` folder:
 ## 9️⃣ KNOWN ISSUES & FIXES
 
 ### ⚠️ Issue 1: CSS Files Missing Warning
+
 **Status:** ⚠️ Warning (not blocking)
+
 ```
 styles/projects_design.css doesn't exist at build time
 styles/topics_design.css doesn't exist at build time
 ```
+
 **Impact:** None - pages use inline CSS  
 **Fix:** Optional - can be removed from HTML if not needed
 
 ### ⚠️ Issue 2: Script type="module" Warnings
+
 **Status:** ⚠️ Warning (not blocking)
+
 ```
 <script src="js/auth.js"> can't be bundled without type="module"
 ```
+
 **Impact:** None - scripts are standalone and work fine  
 **Fix:** Optional - add `type="module"` to all script tags
 
 ### ✅ Issue 3: Password Hashing
+
 **Status:** ⚠️ TODO (low priority)  
 **Current:** SHA-256 hashing  
 **Recommended:** Upgrade to bcrypt before handling real user data  
@@ -366,22 +410,25 @@ vercel --prod
 ### ✅ URL Testing
 
 **Homepage Test:**
+
 ```
 https://bicpes.vercel.app/
 Expected: Homepage loads with hero section
 ```
 
 **Projects Page Test:**
+
 ```
 https://bicpes.vercel.app/pages/projects.html
 Expected: Projects list loads, filters work
 ```
 
 **API Test (in browser console):**
+
 ```javascript
-fetch('https://bicpes.vercel.app/api/projects')
-  .then(r => r.json())
-  .then(data => console.log(data))
+fetch("https://bicpes.vercel.app/api/projects")
+  .then((r) => r.json())
+  .then((data) => console.log(data));
 ```
 
 ### ✅ Supabase Connectivity Test
@@ -389,16 +436,14 @@ fetch('https://bicpes.vercel.app/api/projects')
 ```javascript
 // In browser console after deploying
 const { createClient } = window.supabase;
-const sb = createClient(
-  'your_supabase_url',
-  'your_anon_key'
-);
-await sb.from('projects').select().limit(1);
+const sb = createClient("your_supabase_url", "your_anon_key");
+await sb.from("projects").select().limit(1);
 ```
 
 ### ✅ Performance Metrics
 
 Expected load times:
+
 - Homepage: < 2 seconds
 - Pages: < 1.5 seconds
 - API responses: < 500ms
@@ -408,15 +453,18 @@ Expected load times:
 ## 1️⃣2️⃣ SECURITY CONSIDERATIONS
 
 ### ✅ CORS Headers
+
 - ✅ All API endpoints include CORS headers
 - ✅ Allows requests from any origin (can be restricted to domain in production)
 
 ### ✅ Authentication
+
 - ✅ Session tokens stored in localStorage (client-side)
 - ✅ 24-hour expiry on tokens
 - ✅ Protected pages check authentication status
 
 ### ⚠️ TODO: Security Enhancements
+
 - [ ] Upgrade password hashing from SHA-256 to bcrypt
 - [ ] Implement rate limiting on auth endpoints
 - [ ] Add CSRF protection for form submissions
@@ -429,12 +477,14 @@ Expected load times:
 ## 1️⃣3️⃣ MONITORING & LOGGING
 
 ### Vercel Dashboard
+
 - Real-time deployment status
 - Build logs
 - Function execution logs
 - Performance metrics
 
 ### Supabase Dashboard
+
 - Database query analytics
 - Authentication logs
 - API usage statistics
@@ -447,6 +497,7 @@ Expected load times:
 ### 🟢 DEPLOYMENT STATUS: **READY**
 
 **Summary:**
+
 - ✅ All 8 HTML pages built successfully
 - ✅ 5 API endpoints configured and functional
 - ✅ Supabase schema ready
@@ -458,6 +509,7 @@ Expected load times:
 - ✅ Authentication flow implemented
 
 **Next Steps:**
+
 1. Create Supabase project and get credentials
 2. Run SQL schema from `database/001_init.sql`
 3. Add Supabase credentials to Vercel environment variables
