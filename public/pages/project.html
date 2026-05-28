@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BICpES — Project Detail</title>
+    <link rel="stylesheet" type="text/css" href="../styles/design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        .breadcrumb {
+            padding: 24px 60px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 14px;
+            background: rgba(30,30,30,0.5);
+            border-bottom: 1px solid rgba(245,245,245,0.10);
+        }
+        .breadcrumb a { color: #9b46d4; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb .sep { color: rgba(245,245,245,0.40); }
+        .breadcrumb .current { color: rgba(245,245,245,0.70); }
+        
+        .hero {
+            padding: 60px 80px;
+            background: linear-gradient(135deg, rgba(155,70,212,0.08) 0%, rgba(155,70,212,0.03) 100%);
+            border-bottom: 1px solid rgba(155,70,212,0.20);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; }
+        .hero-title em { font-style: italic; color: #cc88f5; }
+        .hero-brief { font-size: 15px; color: rgba(245,245,245,0.70); line-height: 1.6; }
+        
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section { margin-bottom: 60px; }
+        .section-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: rgba(155,70,212,0.80); margin-bottom: 12px; }
+        .section h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; margin-bottom: 20px; color: #fff; }
+        .section p { font-size: 15px; line-height: 1.7; color: rgba(245,245,245,0.75); margin-bottom: 16px; }
+        
+        .comp-table { width: 100%; border-collapse: collapse; background: rgba(30,30,30,0.6); border: 1px solid rgba(155,70,212,0.20); border-radius: 12px; overflow: hidden; }
+        .comp-table th { padding: 14px 20px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; color: rgba(155,70,212,0.80); border-bottom: 1px solid rgba(155,70,212,0.15); }
+        .comp-table td { padding: 14px 20px; border-bottom: 1px solid rgba(245,245,245,0.08); }
+        .comp-table .qty { display: inline-block; padding: 4px 12px; background: rgba(155,70,212,0.10); border: 1px solid rgba(155,70,212,0.25); border-radius: 6px; font-size: 12px; font-weight: 600; }
+        
+        .steps { display: flex; flex-direction: column; gap: 24px; }
+        .step { display: grid; grid-template-columns: 60px 1fr; gap: 20px; }
+        .step-circle { width: 60px; height: 60px; background: linear-gradient(135deg, #9b46d4, #cc88f5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: #fff; flex-shrink: 0; }
+        .step-body {}
+        .step-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .step-desc { font-size: 14px; color: rgba(245,245,245,0.70); line-height: 1.6; margin-bottom: 12px; }
+        .step-note { padding: 12px 14px; background: rgba(155,70,212,0.08); border: 1px solid rgba(155,70,212,0.20); border-radius: 8px; }
+        .step-note p { margin: 0; font-size: 13px; color: rgba(155,70,212,0.80); }
+        
+        .video-wrap {
+            background: rgba(30,30,30,0.6);
+            border: 1px solid rgba(155,70,212,0.20);
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        .video-thumb {
+            width: 200px;
+            height: 140px;
+            background: rgba(155,70,212,0.10);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            position: relative;
+        }
+        .play-btn { font-size: 32px; }
+        .video-meta { display: flex; flex-direction: column; gap: 8px; }
+        .video-title { font-size: 15px; font-weight: 600; color: #fff; }
+        .video-dur { font-size: 13px; color: rgba(155,70,212,0.80); }
+        
+        .back-bar { padding: 24px 60px; border-top: 1px solid rgba(245,245,245,0.10); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #9b46d4; text-decoration: none; font-weight: 600; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding: 40px 20px; }
+            .hero-title { font-size: 32px; }
+            .content { padding: 40px 16px; }
+            .video-wrap { grid-template-columns: 1fr; }
+            .video-thumb { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="left-side"><img src="../images/Logo/BICpES Learning Hub Logo.png" alt="Logo"></a>
+        <div class="center">
+            <a href="../index.html">About Us</a>
+            <a href="topics.html">Topics</a>
+            <a href="projects.html">Projects</a>
+            <a href="#tools">Tools</a>
+        </div>
+        <div class="right-side" id="navRight">
+            <!-- Dynamically populated by nav.js -->
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <a href="projects.html">Projects</a>
+        <span class="sep">›</span>
+        <span class="current" id="breadcrumbTitle">Project</span>
+    </div>
+
+    <div class="hero">
+        <div class="hero-left">
+            <span class="hero-tag" id="heroTag">Project Tag</span>
+            <div class="hero-title">
+                <span id="heroTitle">Project</span> <em id="heroTitleEm">Name</em>
+            </div>
+        </div>
+        <div class="hero-right">
+            <p class="hero-brief" id="heroBrief">Project description goes here.</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- 1. OVERVIEW -->
+        <div class="section">
+            <div class="section-eyebrow">Overview</div>
+            <h2>About this Project</h2>
+            <div id="overviewContent">
+                <p>Loading project details...</p>
+            </div>
+        </div>
+
+        <!-- 2. REQUIRED COMPONENTS -->
+        <div class="section" id="componentsSection" style="display:none;">
+            <div class="section-eyebrow">Required Components</div>
+            <h2>Parts &amp; Materials</h2>
+            <table class="comp-table" id="componentsTable">
+                <thead>
+                    <tr>
+                        <th style="width:30%">Component</th>
+                        <th style="width:45%">Specification</th>
+                        <th>Qty</th>
+                    </tr>
+                </thead>
+                <tbody id="componentsBody">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. PROCEDURE -->
+        <div class="section" id="procedureSection" style="display:none;">
+            <div class="section-eyebrow">Procedure</div>
+            <h2>Step-by-Step Build Guide</h2>
+            <div class="steps" id="stepsContainer">
+            </div>
+        </div>
+
+        <!-- 4. VIDEO TUTORIAL -->
+        <div class="section">
+            <div class="section-eyebrow">Video Tutorial</div>
+            <h2>Watch &amp; Learn</h2>
+            <div class="video-wrap">
+                <div class="video-thumb">
+                    <div class="play-btn">▶</div>
+                </div>
+                <div class="video-meta">
+                    <span class="video-title" id="videoTitle">Full Build Walkthrough</span>
+                    <span class="video-dur" id="videoDur">--:--</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-bar">
+        <a href="projects.html" class="back-link">← Back to Projects</a>
+    </div>
+
+    <footer class="footer">
+        <p>@ 2026 BICpES Learning Hub | Do not share my personal information</p>
+        <div class="links">
+            <a href="https://www.facebook.com/BICpES" target="_blank"><strong>Facebook</strong></a>
+        </div>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/db.js"></script>
+    <script>
+        // Get project ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const projectId = parseInt(params.get('id')) || 0;
+
+        if (projectId === 0) {
+            window.location.href = 'projects.html';
+        }
+
+        async function loadProject() {
+            if (!isLoggedIn()) {
+                window.location.href = '../index.html#login';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/projects?id=${projectId}`);
+                const data = await response.json();
+                
+                if (!data.data || data.data.length === 0) {
+                    window.location.href = 'projects.html';
+                    return;
+                }
+
+                const project = data.data[0];
+                displayProject(project);
+            } catch (error) {
+                console.error('Error loading project:', error);
+                document.getElementById('overviewContent').innerHTML = '<p>Error loading project details.</p>';
+            }
+        }
+
+        function displayProject(project) {
+            // Update breadcrumb and hero
+            document.getElementById('breadcrumbTitle').textContent = project.title;
+            
+            const words = project.title.split(' ');
+            const lastWord = words.pop();
+            const restWords = words.join(' ');
+            
+            document.getElementById('heroTag').textContent = `${project.category} · ${project.year}`;
+            document.getElementById('heroTitle').textContent = restWords;
+            document.getElementById('heroTitleEm').textContent = lastWord;
+            document.getElementById('heroBrief').textContent = project.description;
+
+            // Overview
+            const overview = project.overview_body || project.description;
+            const paragraphs = overview.split('|').map(p => p.trim()).filter(p => p !== '');
+            const overviewHtml = paragraphs.map(p => `<p>${p}</p>`).join('');
+            document.getElementById('overviewContent').innerHTML = overviewHtml + `
+                <p style="margin-top:14px;">
+                    <span style="display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 14px;border-radius:50px;background:rgba(155,70,212,0.10);color:#cc88f5;border:1px solid rgba(155,70,212,0.25);">
+                        ${project.difficulty} · ${project.category}
+                    </span>
+                </p>
+            `;
+
+            // Components
+            if (project.components_json) {
+                try {
+                    const components = JSON.parse(project.components_json);
+                    if (Array.isArray(components) && components.length > 0) {
+                        document.getElementById('componentsSection').style.display = 'block';
+                        const tbody = document.getElementById('componentsBody');
+                        tbody.innerHTML = components.map(comp => `
+                            <tr>
+                                <td>${comp.name || ''}</td>
+                                <td>${comp.spec || ''}</td>
+                                <td><span class="qty">${comp.qty || ''}</span></td>
+                            </tr>
+                        `).join('');
+                    }
+                } catch (e) {
+                    console.error('Error parsing components:', e);
+                }
+            }
+
+            // Procedure Steps
+            if (project.procedure_steps) {
+                try {
+                    const steps = JSON.parse(project.procedure_steps);
+                    if (Array.isArray(steps) && steps.length > 0) {
+                        document.getElementById('procedureSection').style.display = 'block';
+                        const stepsHtml = steps.map((step, idx) => `
+                            <div class="step">
+                                <div class="step-circle">${idx + 1}</div>
+                                <div class="step-body">
+                                    <div class="step-title">${step.title || ''}</div>
+                                    <div class="step-desc">${step.description || ''}</div>
+                                    ${step.note ? `<div class="step-note"><p>${step.note}</p></div>` : ''}
+                                </div>
+                            </div>
+                        `).join('');
+                        document.getElementById('stepsContainer').innerHTML = stepsHtml;
+                    }
+                } catch (e) {
+                    console.error('Error parsing steps:', e);
+                }
+            }
+
+            // Video
+            document.getElementById('videoTitle').textContent = project.video_title || (project.title + ' — Complete Build Guide');
+            document.getElementById('videoDur').textContent = project.video_duration || '--:--';
+        }
+
+        // Load on page load
+        document.addEventListener('DOMContentLoaded', loadProject);
+    </script>
+</body>
+</html>
