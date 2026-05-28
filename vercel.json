@@ -1,8 +1,6 @@
 {
-  "projectSettings": {
-    "framework": "vite",
-    "sourceFilesOutsideRootDirectory": true
-  },
+  "framework": "vite",
+  "sourceFilesOutsideRootDirectory": true,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "public": true,
